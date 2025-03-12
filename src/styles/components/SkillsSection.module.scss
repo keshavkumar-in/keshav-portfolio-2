@@ -1,0 +1,122 @@
+// SkillsSection.module.scss
+.skillsSection {
+  background-color: #0e0e0e;
+  color: white;
+  padding: 4rem 1rem;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+
+  .tag {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.33);
+    font-size: 1rem;
+    font-weight: 600;
+    background: linear-gradient(to right, #ff5e14, #ffb700);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0;
+  }
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem;
+  min-height: 400px; // Set a minimum height for the grid
+  align-items: end; // Align cards to bottom
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skillCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: linear-gradient(50deg, #121212 20%, #1d1c1c 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10rem;
+  padding: 1.5rem 1rem;
+  width: 100%;
+  min-height: 200px; // Set minimum height
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      circle at center,
+      rgba(45, 45, 45, 0.3) 0%,
+      rgba(26, 26, 26, 0) 70%
+    );
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  .iconWrapper {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #191818 20%, #312c2c 100%);
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+  }
+
+  .icon {
+    max-width: 60%;
+    max-height: 60%;
+  }
+
+  .percentage {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .skillName {
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+}

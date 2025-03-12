@@ -31,9 +31,13 @@
     padding: 8px 16px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 30px;
-    font-size: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.33);
+    font-size: 1rem;
     font-weight: 600;
-    color: #ff6b6b;
+    background: linear-gradient(to right, #ff5e14, #ffb700);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 16px;
   }
 

@@ -1,9 +1,10 @@
 // src/app/page.tsx
-import Navbar from "@/components/Navbar/Navbar";
-import HeroSection from "@/components/HeroSection/HeroSection";
-import StatsSection from "@/components/StatsSection/StatsSection";
-import ServicesSection from "@/components/ServicesSection/ServicesSection";
-import PortfolioSection from "@/components/PortfolioSection/PortfolioSection.";
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import StatsSection from "@/components/StatsSection";
+import ServicesSection from "@/components/ServicesSection";
+import PortfolioSection from "@/components/PortfolioSection.";
+import SkillsSection from "@/components/SkillsSection";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <StatsSection />
       <ServicesSection />
       <PortfolioSection />
+      <SkillsSection />
     </main>
   );
 }
