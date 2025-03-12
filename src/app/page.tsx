@@ -5,6 +5,8 @@ import StatsSection from "@/components/StatsSection";
 import ServicesSection from "@/components/ServicesSection";
 import PortfolioSection from "@/components/PortfolioSection.";
 import SkillsSection from "@/components/SkillsSection";
+import TimelineSection from "@/components/TimelineSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 
 export default function Home() {
   return (
@@ -15,6 +17,8 @@ export default function Home() {
       <ServicesSection />
       <PortfolioSection />
       <SkillsSection />
+      <TimelineSection />
+      <TestimonialsSection />
     </main>
   );
 }

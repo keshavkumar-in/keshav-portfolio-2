@@ -1,0 +1,271 @@
+// TestimonialsSection.module.scss
+.testimonialsSection {
+  background-color: #121212;
+  color: white;
+  padding: 4rem 2rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+}
+
+.badgeWrapper {
+  margin-bottom: 0.5rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.33);
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(to right, #ff5e14, #ffb700);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 2.75rem;
+  font-weight: 700;
+  margin: 0;
+  flex-grow: 1;
+
+  @media (max-width: 768px) {
+    font-size: 2.25rem;
+  }
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .navigationLine {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .line {
+    height: 1px;
+    width: 30px;
+    background-color: #ffffff;
+  }
+
+  .dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+
+    .dotInner {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+
+    &.active {
+      border-color: #ff4500;
+      background-color: #fff;
+
+      .dotInner {
+        background-color: #ff4500;
+      }
+    }
+  }
+}
+
+.testimonialCard {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(90deg, #1b1b1b 20%, #303335 100%);
+  border-radius: 12px;
+  overflow: hidden;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.testimonialSide {
+  position: relative;
+
+  @media (max-width: 992px) {
+    min-height: 300px;
+  }
+}
+
+.testimonialImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 90%;
+    height: 80%;
+    border: 2px dashed #ff4d00;
+    border-radius: 50%;
+  }
+}
+
+.testimonialImage {
+  position: relative;
+  width: 70%;
+  height: 60%;
+  border-radius: 100%;
+  overflow: hidden;
+  background: linear-gradient(45deg, #ff4d00, #ff8a00);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.contentSide {
+  padding: 3rem;
+  position: relative;
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+  }
+
+  &::before {
+    position: absolute;
+    right: 50px;
+    top: 45px;
+    content: "";
+    height: 70px;
+    width: 70px;
+    background: url("/assets/quote.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right top;
+  }
+}
+
+.reviewInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.reviewLabel {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  color: #ffd700;
+  font-size: 1.25rem;
+}
+
+.platformInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.platformLogo {
+  height: 30px;
+  width: 120px;
+  position: relative;
+}
+
+.ratingInfo {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.testimonialText {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+
+  @media (max-width: 768px) {
+    font-size: 1.125rem;
+  }
+}
+
+.divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 2rem 0;
+}
+
+.authorInfo {
+  margin-bottom: 1rem;
+}
+
+.authorName {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.authorPosition {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 1px;
+}
+
+.testimonialNumber {
+  position: absolute;
+  bottom: 2rem;
+  right: 3rem;
+  color: transparent;
+  font-size: 70px;
+  line-height: 1;
+  -webkit-text-stroke: 1px #9e9393;
+  font-weight: 900;
+
+  @media (max-width: 768px) {
+    font-size: 5rem;
+    right: 2rem;
+    bottom: 1rem;
+  }
+}
