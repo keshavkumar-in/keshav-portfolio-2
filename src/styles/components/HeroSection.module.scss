@@ -86,22 +86,60 @@
 
 .hireButton {
   @include flexCenter;
-  background: linear-gradient(to right, #ff5e14, #ffb700);
+  background: transparent;
   color: white;
   text-decoration: none;
-  padding: 1rem 2rem;
+  padding: 13px 20px;
   border-radius: 4px;
   font-weight: 600;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+
+  &::after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background: url("/assets/5.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+    border-radius: 5px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
 
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(255, 94, 20, 0.2);
+    color: #000;
+
+    &::after {
+      position: absolute;
+      left: 0;
+      top: 0;
+      content: "";
+      height: 100%;
+      width: 100%;
+      background: url("/assets/btn-light.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: -1;
+      border-radius: 5px;
+      transform: none;
+      background-color: transparent;
+      transition: all 0.35s ease-in-out;
+    }
   }
 
   .arrow {
-    margin-left: 0.5rem;
-    font-size: 1.2rem;
+    margin-left: 2rem;
+    font-size: 1.25rem;
   }
 }
 
@@ -121,7 +159,7 @@
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #ff5e14;
+    background: linear-gradient(to right, #ff5e14, #ffb700);
     transform: translateY(-3px);
   }
 }
