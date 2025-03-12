@@ -169,6 +169,10 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  background: url("/assets/1.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 
   @media (max-width: 992px) {
     grid-row: 1;
@@ -182,7 +186,7 @@
   max-width: 500px;
   object-fit: cover;
   border-radius: 20px;
-  background-color: #ffb700;
+  // background-color: #ffb700;
   position: relative;
   z-index: 2;
 }

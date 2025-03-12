@@ -64,7 +64,7 @@ const BlogSection: React.FC = () => {
                 </div>
                 <h3 className={styles.blogTitle}>{post.title}</h3>
                 <a href={post.link} className={styles.readMore}>
-                  READ MORE <span className={styles.arrow}>→</span>
+                  READ MORE <span className={styles.arrow}>↗</span>
                 </a>
               </div>
             </div>

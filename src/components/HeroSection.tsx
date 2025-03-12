@@ -12,10 +12,10 @@ const HeroSection: React.FC = () => {
         <div className={styles.content}>
           <div className={styles.heroText}>
             <h1>
-              Hey <span className={styles.waveEmoji}>👋</span> I'm Dalton
+              Hey <span className={styles.waveEmoji}>👋</span> I'm Keshav
             </h1>
             <div className={styles.professionBox}>
-              <p>Professional Coder |</p>
+              <p>Professional Coder</p>
             </div>
             <p className={styles.description}>
               Hi, my name is Dalton Grant and I began using WordPress when it first
