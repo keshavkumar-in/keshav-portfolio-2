@@ -1,0 +1,103 @@
+// StatsSection.module.scss
+.statsSection {
+  padding: 5rem 0;
+  background-color: #1a1a1a;
+  overflow: hidden;
+  position: relative;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.statBox {
+  background-color: #2a2a2a;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.statNumber {
+  font-size: 4.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #ff5e14;
+  display: flex;
+  align-items: center;
+}
+
+.plus {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.statLabel {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.aboutContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.aboutText {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2.5rem;
+}
+
+.learnMoreButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: fit-content;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &:hover {
+    border-color: #ff5e14;
+    background: linear-gradient(to right, rgba(255, 94, 20, 0.1), transparent);
+
+    .arrowIcon {
+      transform: translateX(3px);
+    }
+  }
+}
+
+.arrowIcon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}

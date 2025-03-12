@@ -1,0 +1,138 @@
+// ServicesSection.module.scss
+
+.servicesSection {
+  padding: 80px 20px;
+  background-color: #111111;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(45deg, #ff3366, #3366ff);
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.4;
+    z-index: 0;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+
+  .tag {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ff6b6b;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+  }
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.serviceCard {
+  background-color: #1a1a1a;
+  border-radius: 16px;
+  padding: 32px 24px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid transparent; // Transparent border by default
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 107, 107, 0.3); // Border appears on hover
+  }
+
+  h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 20px 0 16px;
+  }
+
+  p {
+    color: #aaaaaa;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    flex-grow: 1;
+  }
+}
+
+.iconContainer {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+
+  &:nth-child(1) {
+    background: linear-gradient(135deg, #ff6b6b, #ff9e6b);
+  }
+
+  &:nth-child(2) {
+    background: linear-gradient(135deg, #6b88ff, #6bffb8);
+  }
+
+  &:nth-child(3) {
+    background: linear-gradient(135deg, #ff6bee, #6b8aff);
+  }
+
+  &:nth-child(4) {
+    background: linear-gradient(135deg, #ffce6b, #ff6b8a);
+  }
+}
+
+.readMore {
+  display: flex;
+  align-items: center;
+  color: #ff6b6b;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+
+  .arrow {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover .arrow {
+    transform: translateX(4px);
+  }
+}

@@ -1,0 +1,212 @@
+// HeroSection.module.scss
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+}
+
+.heroSection {
+  position: relative;
+  background-color: #1a1a1a;
+  color: white;
+  min-height: 100vh;
+  padding: 0 2rem;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  height: calc(100vh - 100px);
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    height: auto;
+    padding: 4rem 0;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heroText {
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+
+    @media (max-width: 768px) {
+      font-size: 3rem;
+    }
+  }
+
+  .waveEmoji {
+    display: inline-block;
+    animation: wave 2.5s infinite;
+    transform-origin: 70% 70%;
+  }
+}
+
+.professionBox {
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  padding: 0.5rem 1.5rem;
+  margin-bottom: 1.5rem;
+
+  p {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.cta {
+  @include flexCenter;
+  gap: 2rem;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+}
+
+.hireButton {
+  @include flexCenter;
+  background: linear-gradient(to right, #ff5e14, #ffb700);
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 94, 20, 0.2);
+  }
+
+  .arrow {
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+  }
+}
+
+.socialLinks {
+  @include flexCenter;
+  gap: 1rem;
+}
+
+.socialIcon {
+  @include flexCenter;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #ff5e14;
+    transform: translateY(-3px);
+  }
+}
+
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  @media (max-width: 992px) {
+    grid-row: 1;
+    margin-bottom: 2rem;
+  }
+}
+
+.profileImage {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+  object-fit: cover;
+  border-radius: 20px;
+  background-color: #ffb700;
+  position: relative;
+  z-index: 2;
+}
+
+.decorations {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+
+  .decorStar1,
+  .decorStar2,
+  .decorStar3 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(255, 183, 0, 0.2)'%3E%3Cpath d='M12,2.6l2.4,6.9h6.9l-5.4,4.3l2.1,7.1l-6-4.3l-6,4.3l2.1-7.1l-5.4-4.3h6.9z'/%3E%3C/svg%3E");
+    background-size: contain;
+    opacity: 0.3;
+  }
+
+  .decorStar1 {
+    top: 15%;
+    left: 10%;
+  }
+
+  .decorStar2 {
+    bottom: 20%;
+    left: 20%;
+  }
+
+  .decorStar3 {
+    right: 15%;
+    bottom: 10%;
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
