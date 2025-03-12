@@ -1,0 +1,125 @@
+.blogSection {
+  background-color: #0e0e0e;
+  color: white;
+  padding: 4rem 1rem;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 4rem;
+
+    .tag {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.33);
+      font-size: 1rem;
+      font-weight: 600;
+      background: linear-gradient(to right, #ff5e14, #ffb700);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+  }
+
+  .blogGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .blogCard {
+    background-color: #1a1a1a;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .imageWrapper {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+
+      .image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .content {
+      padding: 1.5rem;
+
+      .meta {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+        .category {
+          background-color: rgba(255, 255, 255, 0.1);
+          padding: 0.25rem 0.75rem;
+          border-radius: 1rem;
+          font-size: 0.875rem;
+          font-weight: 600;
+        }
+
+        .date {
+          font-size: 0.875rem;
+          color: rgba(255, 255, 255, 0.7);
+        }
+      }
+
+      .blogTitle {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .readMore {
+        display: inline-flex;
+        align-items: center;
+        color: #ff4d00;
+        font-weight: 600;
+        text-decoration: none;
+
+        .arrow {
+          margin-left: 0.5rem;
+          transition: transform 0.3s ease;
+        }
+
+        &:hover .arrow {
+          transform: translateX(5px);
+        }
+      }
+    }
+  }
+}

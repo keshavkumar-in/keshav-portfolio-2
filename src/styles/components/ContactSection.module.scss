@@ -264,7 +264,7 @@
 
     img {
       position: absolute;
-      right: 40px;
+      right: 0;
       bottom: 0;
       height: 90%;
       object-fit: contain;
@@ -281,7 +281,7 @@
       &:nth-child(2) {
         height: auto;
         padding: 0;
-        right: 110px;
+        right: 70px;
         width: 100%;
         bottom: 5%;
         filter: brightness(0) invert(1);
