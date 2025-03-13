@@ -4,13 +4,23 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { useScrollSpy } from "@/hooks/useScrollSpy";
 import styles from "@/styles/components/Navbar.module.scss";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
+
+  const navItems = [
+    { name: "HOME", path: "home" },
+    { name: "SERVICES", path: "services" },
+    { name: "PORTFOLIO", path: "portfolio" },
+    { name: "RESUME", path: "resume" },
+    { name: "CONTACT", path: "contact" },
+    { name: "BLOGS", path: "blogs" },
+  ];
+
+  const activeSection = useScrollSpy(navItems.map(item => item.path));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,14 +39,14 @@ const Navbar: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const navItems = [
-    { name: "HOME", path: "/" },
-    { name: "SERVICES", path: "/services" },
-    { name: "PORTFOLIO", path: "/portfolio" },
-    { name: "RESUME", path: "/resume" },
-    { name: "PRICING", path: "/pricing" },
-    { name: "CONTACT", path: "/contact" },
-  ];
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false); // Close mobile menu after clicking
+    }
+  };
 
   return (
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
@@ -56,10 +66,11 @@ const Navbar: React.FC = () => {
           {navItems.map((item) => (
             <div key={item.name} className={styles.navItem}>
               <Link
-                href={item.path}
+                href={`#${item.path}`}
                 className={`${styles.navLink} ${
-                  pathname === item.path ? styles.active : ""
+                  activeSection === item.path ? styles.active : ""
                 }`}
+                onClick={(e) => handleClick(e, item.path)}
               >
                 {item.name}
               </Link>
@@ -67,7 +78,11 @@ const Navbar: React.FC = () => {
           ))}
         </div>
 
-        <Link href="/contact" className={styles.talkButton}>
+        <Link 
+          href="#contact" 
+          className={styles.talkButton}
+          onClick={(e) => handleClick(e, 'contact')}
+        >
           Let's Talk <span className={styles.chatIcon}>💬</span>
         </Link>
 

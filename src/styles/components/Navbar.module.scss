@@ -74,10 +74,30 @@
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  position: relative;
 
-  &:hover,
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #FFD700, #FFA500);
+    transition: width 0.3s ease;
+    border-radius: 2px;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
   &.active {
-    color: #ff5e14;
+    color: #FFD700;
+    
+    &::after {
+      width: 100%;
+    }
   }
 }
 

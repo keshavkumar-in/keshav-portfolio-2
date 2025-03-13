@@ -115,7 +115,7 @@ const PortfolioSection: React.FC = () => {
   };
 
   return (
-    <section className={styles.portfolioSection}>
+    <section className={styles.portfolioSection} id="portfolio">
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.tag}>PORTFOLIO</div>

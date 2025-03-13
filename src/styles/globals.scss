@@ -12,6 +12,7 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-color: #1a1a1a;
   color: white;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -23,4 +24,29 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+/* For WebKit browsers */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #ff5e14, #ffb700);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #ff5e14, #ffb700);
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ff5e14 #1a1a1a;
 }

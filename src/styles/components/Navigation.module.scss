@@ -1,0 +1,48 @@
+.navigation {
+  ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navLink {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, #ff5e14, #ffb700);
+      transition: width 0.3s ease;
+    }
+
+    &:hover {
+      color: #ffb700;
+      
+      &::after {
+        width: 80%;
+      }
+    }
+
+    &.active {
+      color: #ffb700;
+
+      &::after {
+        width: 80%;
+      }
+    }
+  }
+} 

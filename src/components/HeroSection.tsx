@@ -7,7 +7,7 @@ import { FaFacebookF, FaLinkedinIn, FaDribbble } from 'react-icons/fa';
 
 const HeroSection: React.FC = () => {
   return (
-    <section className={styles.heroSection}>
+    <section id="home" className={styles.heroSection}>
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.heroText}>
@@ -18,9 +18,9 @@ const HeroSection: React.FC = () => {
               <p>Professional Coder</p>
             </div>
             <p className={styles.description}>
-              Hi, my name is Dalton Grant and I began using WordPress when it first
-              began. I've spent most of my waking hours for the last ten years designing,
-              programming and operating WordPress sites.
+              Hi, my name is Keshav Kumar and I began coding when I was in high school.
+              I've spent most of my waking hours for the last several years designing,
+              programming and building web applications.
             </p>
             <div className={styles.cta}>
               <Link href="/contact" className={styles.hireButton}>
@@ -41,21 +41,49 @@ const HeroSection: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Vertical separator between left and right sides */}
+        <div className={styles.verticalSeparator}>
+          <div className={styles.separatorLine}></div>
+        </div>
+
         <div className={styles.imageContainer}>
-          <Image 
-            src="/images/profile.jpg" 
-            alt="Dalton Grant" 
-            width={500} 
-            height={600} 
+          <div className={styles.backgroundElements}>
+            <Image
+              src="/assets/1.png"
+              alt="Yellow background"
+              width={450}
+              height={550}
+              className={styles.yellowBackground}
+            />
+            <Image
+              src="/assets/3.png"
+              alt="Decorative star"
+              width={120}
+              height={120}
+              className={styles.starDecoration}
+            />
+          </div>
+          <Image
+            src="/assets/5-2.png"
+            alt="Keshav Kumar"
+            width={400}
+            height={500}
             priority
             className={styles.profileImage}
           />
         </div>
       </div>
-      <div className={styles.decorations}>
-        <span className={styles.decorStar1}></span>
-        <span className={styles.decorStar2}></span>
-        <span className={styles.decorStar3}></span>
+
+      {/* Bottom separator */}
+      <div className={styles.bottomSeparator}>
+        <Image
+          src="/assets/4-dark.png"
+          alt="Bottom separator"
+          width={1200}
+          height={50}
+          className={styles.bottomSeparatorImage}
+        />
       </div>
     </section>
   );

@@ -36,7 +36,7 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section className={styles.contactSection}>
+    <section className={styles.contactSection} id="contact">
       <div className={styles.container}>
         <div className={styles.contentWrapper}>
           <h1 className={styles.title}>CONTACT ME</h1>

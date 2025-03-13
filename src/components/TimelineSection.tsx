@@ -87,7 +87,7 @@ const TimelineSection: React.FC = () => {
   );
 
   return (
-    <section className={styles.timelineSection}>
+    <section className={styles.timelineSection} id="resume">
       <div className={styles.container}>
         <div className={styles.columns}>
           <TimelineColumn title="My Expertise" items={expertiseItems} />

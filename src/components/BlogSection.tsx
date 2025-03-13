@@ -39,7 +39,7 @@ const blogPosts: BlogPost[] = [
 
 const BlogSection: React.FC = () => {
   return (
-    <section className={styles.blogSection}>
+    <section className={styles.blogSection} id="blogs">
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.tag}>BLOG INSIGHT</div>
