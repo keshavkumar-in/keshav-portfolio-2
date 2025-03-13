@@ -28,8 +28,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
           <Image
             src={project.image}
             alt={project.title}
-            width={800}
-            height={500}
+            fill
             className={styles.projectImage}
           />
         </div>
