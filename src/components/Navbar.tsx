@@ -83,7 +83,7 @@ const Navbar: React.FC = () => {
           className={styles.talkButton}
           onClick={(e) => handleClick(e, 'contact')}
         >
-          Let's Talk <span className={styles.chatIcon}>💬</span>
+          Let&apos;s Talk <span className={styles.chatIcon}>💬</span>
         </Link>
 
         <button className={styles.menuToggle} onClick={toggleMenu}>

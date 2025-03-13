@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { FaGithub, FaExternalLinkAlt, FaTimes } from "react-icons/fa";
 import styles from "@/styles/components/ProjectModal.module.scss";
-import { PortfolioItem } from "./PortfolioSection";
+import { PortfolioItem } from "@/types/portfolio";
 
 interface ProjectModalProps {
   project: PortfolioItem;

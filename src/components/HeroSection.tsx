@@ -12,14 +12,14 @@ const HeroSection: React.FC = () => {
         <div className={styles.content}>
           <div className={styles.heroText}>
             <h1>
-              Hey <span className={styles.waveEmoji}>👋</span> I'm Keshav
+              Hey <span className={styles.waveEmoji}>👋</span> I&apos;m Keshav
             </h1>
             <div className={styles.professionBox}>
               <p>Professional Coder</p>
             </div>
             <p className={styles.description}>
               Hi, my name is Keshav Kumar and I began coding when I was in high school.
-              I've spent most of my waking hours for the last several years designing,
+              I&apos;ve spent most of my waking hours for the last several years designing,
               programming and building web applications.
             </p>
             <div className={styles.cta}>

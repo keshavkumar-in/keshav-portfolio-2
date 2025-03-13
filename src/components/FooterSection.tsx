@@ -1,4 +1,6 @@
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 import styles from "@/styles/components/FooterSection.module.scss";
 
 const FooterSection: React.FC = () => {
@@ -6,7 +8,14 @@ const FooterSection: React.FC = () => {
     <footer className={styles.footerSection}>
       <div className={styles.container}>
         <div className={styles.logo}>
-          <img src="/images/logo.png" alt="Logo" />
+          <Link href="/" className={styles.logo}>
+            <Image
+              src="/images/logo.png"
+              alt="Logo"
+              width={120}
+              height={40}
+            />
+          </Link>
         </div>
         <nav className={styles.nav}>
           <a href="#home">HOME</a>

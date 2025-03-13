@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "@/styles/components/BlogSection.module.scss";
+import Image from "next/image";
 
 interface BlogPost {
   id: number;
@@ -51,9 +52,11 @@ const BlogSection: React.FC = () => {
           {blogPosts.map((post) => (
             <div key={post.id} className={styles.blogCard}>
               <div className={styles.imageWrapper}>
-                <img
+                <Image
                   src={post.image}
                   alt={post.title}
+                  fill
+                  style={{ objectFit: "cover" }}
                   className={styles.image}
                 />
               </div>

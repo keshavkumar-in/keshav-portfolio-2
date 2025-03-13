@@ -1,5 +1,6 @@
 // SkillsSection.tsx
 import React from "react";
+import Image from "next/image";
 import styles from "@/styles/components/SkillsSection.module.scss";
 
 interface Skill {
@@ -34,9 +35,11 @@ const SkillsSection: React.FC = () => {
               style={{ height: `${skill.percentage}%` }}
             >
               <div className={styles.iconWrapper}>
-                <img
+                <Image
                   src={skill.icon}
-                  alt={`${skill.name} icon`}
+                  alt={skill.name}
+                  width={40}
+                  height={40}
                   className={styles.icon}
                 />
               </div>

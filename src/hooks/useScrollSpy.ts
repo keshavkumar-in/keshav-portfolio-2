@@ -21,7 +21,7 @@ export const useScrollSpy = (sectionIds: string[], offset: number = 100) => {
         .find(section => {
           const nextSection = sectionIds
             .map(id => document.getElementById(id))
-            .find((el, index) => {
+            .find((el) => {
               if (!el) return false;
               const rect = el.getBoundingClientRect();
               return rect.top + window.pageYOffset > section.position;

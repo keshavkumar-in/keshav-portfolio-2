@@ -7,7 +7,7 @@ const FreelanceSection: React.FC = () => {
     <section className={styles.freelanceSection}>
       <div className={styles.container}>
         <h1 className={styles.title}>
-          Hello <span className={styles.wave}>👋</span> I'm available for
+          Hello <span className={styles.wave}>👋</span> I&apos;m available for
           freelance work
         </h1>
         <p className={styles.subtitle}>
