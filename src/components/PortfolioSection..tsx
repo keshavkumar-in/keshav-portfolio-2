@@ -129,8 +129,8 @@ const PortfolioSection: React.FC = () => {
                 <Image
                   src={item.image}
                   alt={item.title}
-                  fill
-                  style={{ objectFit: "cover" }}
+                  width={400}
+                  height={300}
                   className={styles.portfolioImage}
                 />
               </div>

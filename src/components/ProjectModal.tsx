@@ -28,8 +28,8 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
           <Image
             src={project.image}
             alt={project.title}
-            fill
-            style={{ objectFit: "cover" }}
+            width={800}
+            height={500}
             className={styles.projectImage}
           />
         </div>

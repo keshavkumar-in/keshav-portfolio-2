@@ -40,7 +40,7 @@ const blogPosts: BlogPost[] = [
 
 const BlogSection: React.FC = () => {
   return (
-    <section className={styles.blogSection} id="blogs">
+    <section id="blogs" className={styles.blogSection}>
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.tag}>BLOG INSIGHT</div>
@@ -55,8 +55,8 @@ const BlogSection: React.FC = () => {
                 <Image
                   src={post.image}
                   alt={post.title}
-                  fill
-                  style={{ objectFit: "cover" }}
+                  width={400}
+                  height={250}
                   className={styles.image}
                 />
               </div>
