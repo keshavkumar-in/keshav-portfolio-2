@@ -1,0 +1,45 @@
+.formattedDescription {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bulletPoint {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bulletTitle {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  padding-left: 1.5rem;
+
+  &::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #ff5e14;
+  }
+}
+
+.subPoints {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-left: 1.5rem;
+}
+
+.subPoint {
+  position: relative;
+  padding-left: 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+
+  &:before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: rgba(255, 255, 255, 0.5);
+  }
+} 
