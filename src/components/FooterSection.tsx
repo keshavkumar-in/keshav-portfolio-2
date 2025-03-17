@@ -10,10 +10,10 @@ const FooterSection: React.FC = () => {
         <div className={styles.logo}>
           <Link href="/" className={styles.logo}>
             <Image
-              src="/images/logo.png"
+              src="/assets/Group 47 (1).png"
               alt="Logo"
-              width={120}
-              height={40}
+              width={100}
+              height={50}
             />
           </Link>
         </div>
@@ -21,12 +21,11 @@ const FooterSection: React.FC = () => {
           <a href="#home">HOME</a>
           <a href="#project">PROJECT</a>
           <a href="#service">SERVICE</a>
-          <a href="#blog">BLOG</a>
+          <a href="#blogs">BLOG</a>
           <a href="#contact">CONTACT</a>
         </nav>
         <div className={styles.copyright}>
-          Copyright 2024 Antux. All Rights Reserved by{" "}
-          <a href="https://validthemes.com">Validthemes</a>
+          Copyright &copy; 2025 Keshav Kumar. All Rights Reserved.{" "}
         </div>
       </div>
     </footer>

@@ -9,12 +9,12 @@ const StatsSection: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.statsGrid}>
           <div className={styles.statBox}>
-            <h2 className={styles.statNumber}>18<span className={styles.plus}>+</span></h2>
+            <h2 className={styles.statNumber}>05<span className={styles.plus}>+</span></h2>
             <p className={styles.statLabel}>Years of Experience</p>
           </div>
           
           <div className={styles.statBox}>
-            <h2 className={styles.statNumber}>56K</h2>
+            <h2 className={styles.statNumber}>20<span className={styles.plus}>+</span></h2>
             <p className={styles.statLabel}>Projects completed</p>
           </div>
         </div>
@@ -27,7 +27,7 @@ const StatsSection: React.FC = () => {
             ideas into functional and aesthetically pleasing digital experiences.
           </p>
           
-          <Link href="/about" className={styles.learnMoreButton}>
+          <Link href="#portfolio" className={styles.learnMoreButton}>
             Learn More
             <span className={styles.arrowIcon}>↗</span>
           </Link>

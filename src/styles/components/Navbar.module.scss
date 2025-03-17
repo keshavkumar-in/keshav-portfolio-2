@@ -5,9 +5,9 @@
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  max-width: 1200px;
+  max-width: 1400px;
   z-index: 1000;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
   transition: all 0.3s ease;
   background-color: rgba(42, 42, 42, 0.9);
   border-radius: 50px;
@@ -85,7 +85,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #FFD700, #FFA500);
+    background: linear-gradient(90deg, #ff5e14, #ffb700);
     transition: width 0.3s ease;
     border-radius: 2px;
   }
@@ -95,8 +95,11 @@
   }
 
   &.active {
-    color: #FFD700;
-    
+    background: linear-gradient(to right, #ff5e14, #ffb700);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
     &::after {
       width: 100%;
     }
@@ -121,7 +124,7 @@
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #ff5e14;
+    background: linear-gradient(to right, #ff5e14, #ffb700);
     color: white;
     transform: translateY(-3px);
   }
