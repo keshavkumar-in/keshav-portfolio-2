@@ -8,6 +8,8 @@ import { PortfolioItem } from "@/types/portfolio";
 import { ContentfulPortfolio } from "@/lib/contentful";
 
 const SkeletonCard: React.FC = () => {
+  const fixedWidths = [60, 80, 100]; // predetermined widths in pixels
+  
   return (
     <div className={`${styles.portfolioItem} ${styles.skeleton}`}>
       <div className={`${styles.imageContainer} ${styles.skeletonImage}`} />
@@ -17,7 +19,7 @@ const SkeletonCard: React.FC = () => {
             <span
               key={i}
               className={`${styles.category} ${styles.skeletonText}`}
-              style={{ width: `${Math.random() * 40 + 60}px` }}
+              style={{ width: `${fixedWidths[i - 1]}px` }}
             />
           ))}
         </div>
