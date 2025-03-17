@@ -26,8 +26,8 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 
         <div className={styles.imageContainer}>
           <Image
-            src={project.image}
-            alt={project.title}
+            src={project.projectImage}
+            alt={project.projectName}
             fill
             className={styles.projectImage}
           />
@@ -35,20 +35,20 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 
         <div className={styles.projectInfo}>
           <div className={styles.categories}>
-            {project.categories.map((category) => (
-              <span key={category} className={styles.category}>
-                {category}
+            {project.techUsed.map((tech) => (
+              <span key={tech} className={styles.category}>
+                {tech}
               </span>
             ))}
           </div>
 
-          <h2 className={styles.title}>{project.title}</h2>
+          <h2 className={styles.title}>{project.projectName}</h2>
           <p className={styles.description}>{project.description}</p>
 
           <div className={styles.techStack}>
             <h3>Technologies Used:</h3>
             <div className={styles.techList}>
-              {project.techStack.map((tech) => (
+              {project.techUsed.map((tech) => (
                 <span key={tech} className={styles.tech}>
                   {tech}
                 </span>
@@ -57,9 +57,9 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
           </div>
 
           <div className={styles.links}>
-            {project.githubUrl && (
+            {project.sourceCode && (
               <a
-                href={project.githubUrl}
+                href={project.sourceCode}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.link}
@@ -67,9 +67,9 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 <FaGithub /> View Code
               </a>
             )}
-            {project.liveUrl && (
+            {project.demoLink && (
               <a
-                href={project.liveUrl}
+                href={project.demoLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.link}

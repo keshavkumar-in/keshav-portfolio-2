@@ -163,4 +163,12 @@
     background: linear-gradient(to right, #ff5e14, #ffb700);
     color: #ffffff;
   }
+
+  &.viewLessButton {
+    background: linear-gradient(45deg, #ff3366, #ff6b3d);
+    
+    &:hover {
+      background: linear-gradient(45deg, #ff6b3d, #ff3366);
+    }
+  }
 }

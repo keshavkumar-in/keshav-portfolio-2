@@ -1,110 +1,45 @@
 // components/PortfolioSection.tsx
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "@/styles/components/PortfolioSection.module.scss";
 import ProjectModal from "./ProjectModal";
-
-interface PortfolioItem {
-  id: number;
-  title: string;
-  image: string;
-  categories: string[];
-  description: string;
-  techStack: string[];
-  liveUrl?: string;
-  githubUrl?: string;
-}
+import { getPortfolioItems } from "@/lib/contentful";
+import { PortfolioItem } from "@/types/portfolio";
 
 const PortfolioSection: React.FC = () => {
   const [visibleItems, setVisibleItems] = useState<number>(6);
-  const [selectedProject, setSelectedProject] = useState<PortfolioItem | null>(
-    null
-  );
+  const [selectedProject, setSelectedProject] = useState<PortfolioItem | null>(null);
+  const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const portfolioItems: PortfolioItem[] = [
-    {
-      id: 1,
-      title: "Document manager application",
-      image: "/assets/2-1.jpg",
-      categories: ["Web", "Coding"],
-      description:
-        "A comprehensive document management system built with modern web technologies. Features include document organization, search, and sharing capabilities.",
-      techStack: ["React", "Node.js", "MongoDB", "AWS S3"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example/repo",
-    },
-    {
-      id: 2,
-      title: "Dynamic mobile app development",
-      image: "/assets/1-1.jpg",
-      categories: ["Software", "Mobile"],
-      description: "A dynamic mobile application for various platforms.",
-      techStack: ["Flutter", "Firebase"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example",
-    },
-    {
-      id: 3,
-      title: "Printable professional brochure templates",
-      image: "/assets/2-1.jpg",
-      categories: ["Brochure", "Design"],
-      description: "Professional brochure templates for printing.",
-      techStack: ["Adobe Illustrator", "Photoshop"],
-    },
-    {
-      id: 4,
-      title: "Create stunning product flexible mockups",
-      image: "/assets/1-1.jpg",
-      categories: ["Brand", "Mockup"],
-      description: "Flexible mockups for showcasing products.",
-      techStack: ["Sketch", "Figma"],
-    },
-    {
-      id: 5,
-      title: "Making smart software smartphones",
-      image: "/assets/2-1.jpg",
-      categories: ["Tech", "Mobile"],
-      description: "Smart software solutions for smartphones.",
-      techStack: ["Java", "Kotlin"],
-    },
-    {
-      id: 6,
-      title: "Decor design vectors illustrations",
-      image: "/assets/1-1.jpg",
-      categories: ["Design", "Art"],
-      description: "Vector illustrations for decor design.",
-      techStack: ["Adobe Illustrator", "CorelDRAW"],
-    },
-    {
-      id: 7,
-      title: "E-commerce website redesign",
-      image: "/assets/2-1.jpg",
-      categories: ["Web", "UI/UX"],
-      description: "Redesign of an e-commerce website.",
-      techStack: ["React", "Redux", "Node.js"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example",
-    },
-    {
-      id: 8,
-      title: "Logo collection for tech startups",
-      image: "/assets/1-1.jpg",
-      categories: ["Brand", "Design"],
-      description: "A collection of logos for tech startups.",
-      techStack: ["Adobe Illustrator", "Photoshop"],
-    },
-    {
-      id: 9,
-      title: "Custom WordPress theme development",
-      image: "/assets/2-1.jpg",
-      categories: ["Web", "Coding"],
-      description: "Development of custom WordPress themes.",
-      techStack: ["WordPress", "PHP", "JavaScript"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example",
-    },
-  ];
+  useEffect(() => {
+    async function fetchPortfolioItems() {
+      try {
+        const items = await getPortfolioItems();
+        const formattedItems: PortfolioItem[] = items.map((item) => ({
+          id: item.sys.id,
+          projectName: item.fields.projectName,
+          slug: item.fields.slug,
+          description: item.fields.description,
+          projectImage: `https:${item.fields.projectImage.fields.file.url}`,
+          developedOn: item.fields.developedOn,
+          techUsed: item.fields.techUsed,
+          role: item.fields.role,
+          demoLink: item.fields.demoLink,
+          sourceCode: item.fields.sourceCode,
+        }));
+        setPortfolioItems(formattedItems);
+        setIsLoading(false);
+      } catch (err) {
+        setError('Failed to load portfolio items');
+        setIsLoading(false);
+      }
+    }
+
+    fetchPortfolioItems();
+  }, []);
 
   const loadMoreItems = () => {
     setVisibleItems((prevValue) =>
@@ -113,6 +48,36 @@ const PortfolioSection: React.FC = () => {
         : prevValue + 3
     );
   };
+
+  const viewLessItems = () => {
+    setVisibleItems(6);
+  };
+
+  if (isLoading) {
+    return (
+      <section className={styles.portfolioSection} id="portfolio">
+        <div className={styles.container}>
+          <div className={styles.header}>
+            <div className={styles.tag}>PORTFOLIO</div>
+            <h2>Loading...</h2>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className={styles.portfolioSection} id="portfolio">
+        <div className={styles.container}>
+          <div className={styles.header}>
+            <div className={styles.tag}>PORTFOLIO</div>
+            <h2>Error: {error}</h2>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className={styles.portfolioSection} id="portfolio">
@@ -127,8 +92,8 @@ const PortfolioSection: React.FC = () => {
             <div key={item.id} className={styles.portfolioItem}>
               <div className={styles.imageContainer}>
                 <Image
-                  src={item.image}
-                  alt={item.title}
+                  src={item.projectImage}
+                  alt={item.projectName}
                   width={400}
                   height={300}
                   className={styles.portfolioImage}
@@ -136,16 +101,16 @@ const PortfolioSection: React.FC = () => {
               </div>
               <div className={styles.portfolioContent}>
                 <div className={styles.categories}>
-                  {item.categories.map((category) => (
+                  {item.techUsed.map((tech) => (
                     <span
-                      key={`${item.id}-${category}`}
+                      key={`${item.id}-${tech}`}
                       className={styles.category}
                     >
-                      {category}
+                      {tech}
                     </span>
                   ))}
                 </div>
-                <h3>{item.title}</h3>
+                <h3>{item.projectName}</h3>
                 <div
                   className={styles.viewButton}
                   onClick={() => setSelectedProject(item)}
@@ -171,14 +136,23 @@ const PortfolioSection: React.FC = () => {
           ))}
         </div>
 
-        {visibleItems < portfolioItems.length && (
-          <div className={styles.loadMoreContainer}>
-            <p>Are you interested to show more portfolios?</p>
-            <button onClick={loadMoreItems} className={styles.loadMoreButton}>
-              Load More
-            </button>
-          </div>
-        )}
+        <div className={styles.loadMoreContainer}>
+          {visibleItems < portfolioItems.length ? (
+            <>
+              <p>Are you interested to show more portfolios?</p>
+              <button onClick={loadMoreItems} className={styles.loadMoreButton}>
+                Load More
+              </button>
+            </>
+          ) : visibleItems > 6 ? (
+            <>
+              <p>Want to see less?</p>
+              <button onClick={viewLessItems} className={`${styles.loadMoreButton} ${styles.viewLessButton}`}>
+                View Less
+              </button>
+            </>
+          ) : null}
+        </div>
       </div>
       <ProjectModal
         project={selectedProject!}
