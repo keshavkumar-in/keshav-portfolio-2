@@ -25,7 +25,7 @@ const FooterSection: React.FC = () => {
           <a href="#contact">CONTACT</a>
         </nav>
         <div className={styles.copyright}>
-          Copyright &copy; 2025 Keshav Kumar. All Rights Reserved.{" "}
+          Copyright &copy; {new Date().getFullYear()} Keshav Kumar. All Rights Reserved.{" "}
         </div>
       </div>
     </footer>
