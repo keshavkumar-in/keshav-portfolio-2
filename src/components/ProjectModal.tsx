@@ -34,19 +34,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
         </div>
 
         <div className={styles.projectInfo}>
-          <div className={styles.categories}>
-            {project.techUsed.map((tech) => (
-              <span key={tech} className={styles.category}>
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          <h2 className={styles.title}>{project.projectName}</h2>
-          <p className={styles.description}>{project.description}</p>
-
           <div className={styles.techStack}>
-            <h3>Technologies Used:</h3>
             <div className={styles.techList}>
               {project.techUsed.map((tech) => (
                 <span key={tech} className={styles.tech}>
@@ -55,6 +43,16 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
               ))}
             </div>
           </div>
+          {/* <div className={styles.categories}>
+            {project.techUsed.map((tech) => (
+              <span key={tech} className={styles.category}>
+                {tech}
+              </span>
+            ))}
+          </div> */}
+
+          <h2 className={styles.title}>{project.projectName}</h2>
+          <p className={styles.description}>{project.description}</p>
 
           <div className={styles.links}>
             {project.sourceCode && (

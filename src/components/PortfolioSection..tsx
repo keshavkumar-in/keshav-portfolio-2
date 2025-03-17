@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "@/styles/components/PortfolioSection.module.scss";
 import ProjectModal from "./ProjectModal";
-import { getPortfolioItems } from "@/lib/contentful";
 import { PortfolioItem } from "@/types/portfolio";
+import { ContentfulPortfolio } from "@/lib/contentful";
 
 const PortfolioSection: React.FC = () => {
   const [visibleItems, setVisibleItems] = useState<number>(6);
@@ -17,7 +17,9 @@ const PortfolioSection: React.FC = () => {
   useEffect(() => {
     async function fetchPortfolioItems() {
       try {
-        const items = await getPortfolioItems();
+        const response = await fetch('/api/portfolio');
+        if (!response.ok) throw new Error('Failed to fetch');
+        const items = await response.json() as ContentfulPortfolio[];
         const formattedItems: PortfolioItem[] = items.map((item) => ({
           id: item.sys.id,
           projectName: item.fields.projectName,
@@ -33,7 +35,7 @@ const PortfolioSection: React.FC = () => {
         setPortfolioItems(formattedItems);
         setIsLoading(false);
       } catch (err) {
-        setError('Failed to load portfolio items');
+        setError(`Failed to load portfolio items, ${err}`);
         setIsLoading(false);
       }
     }
