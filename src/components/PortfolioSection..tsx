@@ -7,6 +7,27 @@ import ProjectModal from "./ProjectModal";
 import { PortfolioItem } from "@/types/portfolio";
 import { ContentfulPortfolio } from "@/lib/contentful";
 
+const SkeletonCard: React.FC = () => {
+  return (
+    <div className={`${styles.portfolioItem} ${styles.skeleton}`}>
+      <div className={`${styles.imageContainer} ${styles.skeletonImage}`} />
+      <div className={styles.portfolioContent}>
+        <div className={styles.categories}>
+          {[1, 2, 3].map((i) => (
+            <span
+              key={i}
+              className={`${styles.category} ${styles.skeletonText}`}
+              style={{ width: `${Math.random() * 40 + 60}px` }}
+            />
+          ))}
+        </div>
+        <div className={`${styles.skeletonText} ${styles.skeletonTitle}`} />
+        <div className={`${styles.viewButton} ${styles.skeletonButton}`} />
+      </div>
+    </div>
+  );
+};
+
 const PortfolioSection: React.FC = () => {
   const [visibleItems, setVisibleItems] = useState<number>(6);
   const [selectedProject, setSelectedProject] = useState<PortfolioItem | null>(null);
@@ -61,7 +82,12 @@ const PortfolioSection: React.FC = () => {
         <div className={styles.container}>
           <div className={styles.header}>
             <div className={styles.tag}>PORTFOLIO</div>
-            <h2>Loading...</h2>
+            <h2>My Recent Work</h2>
+          </div>
+          <div className={styles.portfolioGrid}>
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <SkeletonCard key={i} />
+            ))}
           </div>
         </div>
       </section>
@@ -74,7 +100,7 @@ const PortfolioSection: React.FC = () => {
         <div className={styles.container}>
           <div className={styles.header}>
             <div className={styles.tag}>PORTFOLIO</div>
-            <h2>Error: {error}</h2>
+            <h2>{error}</h2>
           </div>
         </div>
       </section>
