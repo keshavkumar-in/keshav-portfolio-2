@@ -46,6 +46,41 @@
     }
   }
 
+  .loading, .error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    width: 100%;
+    text-align: center;
+    
+    p {
+      margin-top: 1rem;
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top-color: #ff4d00;
+    animation: spin 1s ease-in-out infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .error {
+    color: #ff4d00;
+  }
+
   .blogCard {
     background-color: #1a1a1a;
     border-radius: 1rem;
@@ -103,6 +138,30 @@
         margin-bottom: 1rem;
       }
 
+      .description {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 1rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .readingTime {
+        font-size: 0.875rem;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        
+        &::before {
+          content: "⏱️";
+          margin-right: 0.5rem;
+        }
+      }
+
       .readMore {
         display: inline-flex;
         align-items: center;
@@ -119,6 +178,47 @@
           transform: translateX(5px);
         }
       }
+    }
+  }
+
+  .viewMoreContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+  }
+
+  .viewMoreButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(to right, #ff5e14, #ffb700);
+    color: white;
+    font-weight: 600;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 94, 20, 0.3);
+    
+    .arrow {
+      margin-left: 0.75rem;
+      transition: transform 0.3s ease;
+    }
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 94, 20, 0.4);
+      
+      .arrow {
+        transform: translateX(5px);
+      }
+    }
+    
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 10px rgba(255, 94, 20, 0.3);
     }
   }
 }
