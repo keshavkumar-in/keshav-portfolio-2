@@ -11,12 +11,12 @@ interface Skill {
 
 const SkillsSection: React.FC = () => {
   const skills: Skill[] = [
-    { name: "Adobe XD", percentage: 80, icon: "/assets/diamon.png" },
-    { name: "Figma", percentage: 90, icon: "/assets/figma.png" },
-    { name: "WordPress", percentage: 70, icon: "/assets/diamon.png" },
-    { name: "Photoshop", percentage: 80, icon: "/assets/figma.png" },
-    { name: "Sketch", percentage: 60, icon: "/assets/diamon.png" },
-    { name: "Illustrator", percentage: 90, icon: "/assets/figma.png" },
+    { name: "ReactJS", percentage: 80, icon: "/assets/icons8-react-js-48.png" },
+    { name: "JavaScript", percentage: 90, icon: "/assets/icons8-javascript-48.png" },
+    { name: "TypeScript", percentage: 70, icon: "/assets/icons8-typescript-48.png" },
+    { name: "TailwindCSS", percentage: 80, icon: "/assets/icons8-tailwindcss-48.png" },
+    { name: "Git", percentage: 80, icon: "/assets/icons8-git-48.png" },
+    { name: "SASS", percentage: 60, icon: "/assets/icons8-sass-48.png" },
   ];
 
   return (
@@ -38,13 +38,15 @@ const SkillsSection: React.FC = () => {
                 <Image
                   src={skill.icon}
                   alt={skill.name}
-                  width={40}
-                  height={40}
+                  width={48}
+                  height={48}
                   className={styles.icon}
                 />
               </div>
-              <div className={styles.percentage}>{skill.percentage}%</div>
-              <div className={styles.skillName}>{skill.name}</div>
+              <div>
+                <div className={styles.percentage}>{skill.percentage}%</div>
+                <div className={styles.skillName}>{skill.name}</div>
+              </div>
             </div>
           ))}
         </div>

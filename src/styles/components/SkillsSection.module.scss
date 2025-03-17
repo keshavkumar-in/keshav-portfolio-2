@@ -40,9 +40,9 @@
 .skillsGrid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 2rem;
-  min-height: 400px; // Set a minimum height for the grid
-  align-items: end; // Align cards to bottom
+  gap: 1.5rem;
+  min-height: 400px;
+  align-items: end;
 
   @media (max-width: 1200px) {
     grid-template-columns: repeat(3, 1fr);
@@ -61,21 +61,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  background: linear-gradient(50deg, #121212 20%, #1d1c1c 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10rem;
-  padding: 1.5rem 1rem;
+  justify-content: space-between;
+  background: #161616;
+  border-radius: 100px;
+  padding: 2rem 1rem;
   width: 100%;
-  min-height: 200px; // Set minimum height
+  transition: transform 0.3s ease;
   position: relative;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  }
+  overflow: hidden;
+  text-align: center;
 
   &::before {
     content: "";
@@ -84,39 +78,47 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(
-      circle at center,
-      rgba(45, 45, 45, 0.3) 0%,
-      rgba(26, 26, 26, 0) 70%
-    );
+    background: linear-gradient(180deg,
+        rgba(30, 30, 30, 0.5) 0%,
+        rgba(20, 20, 20, 0.8) 100%);
     border-radius: inherit;
     pointer-events: none;
   }
 
   .iconWrapper {
-    width: 4rem;
-    height: 4rem;
+    width: 80px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(90deg, #191818 20%, #312c2c 100%);
     border-radius: 50%;
-    margin-bottom: 1.5rem;
+    margin-bottom: auto;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(90deg, #191818 20%, #312c2c 100%);
+    border: none;
+    box-shadow: none;
   }
 
   .icon {
-    max-width: 60%;
-    max-height: 60%;
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
   }
 
   .percentage {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
+    color: white;
+    position: relative;
+    z-index: 1;
   }
 
   .skillName {
     font-size: 1rem;
-    opacity: 0.8;
+    color: white;
+    position: relative;
+    z-index: 1;
   }
 }
