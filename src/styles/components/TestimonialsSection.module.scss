@@ -180,6 +180,10 @@
   @media (max-width: 992px) {
     min-height: 300px;
   }
+
+  @media (max-width: 768px) {
+    min-height: 250px;
+  }
 }
 
 .testimonialImageWrapper {
@@ -197,6 +201,13 @@
     height: 80%;
     border: 2px dashed #ff4d00;
     border-radius: 50%;
+  }
+
+  @media (max-width: 768px) {
+    &::before {
+      width: 80%;
+      height: 70%;
+    }
   }
 }
 
@@ -218,6 +229,11 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  @media (max-width: 768px) {
+    width: 60%;
+    height: 50%;
   }
 }
 
@@ -241,6 +257,17 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right top;
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem 4rem;
+
+    &::before {
+      right: 20px;
+      top: 25px;
+      height: 50px;
+      width: 50px;
+    }
   }
 }
 
@@ -297,6 +324,7 @@
 
   @media (max-width: 768px) {
     font-size: 1.125rem;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -337,15 +365,17 @@
   -webkit-text-stroke: 1px #9e9393;
   font-weight: 900;
   transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
+  z-index: 1;
 
   &.slideNumber {
     animation: scaleUp 0.5s ease-in-out;
   }
 
   @media (max-width: 768px) {
-    font-size: 5rem;
-    right: 2rem;
-    bottom: 1rem;
+    font-size: 4rem;
+    right: 1.5rem;
+    bottom: 0.75rem;
+    opacity: 0.7;
   }
 }
 

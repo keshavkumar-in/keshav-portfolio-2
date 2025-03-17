@@ -17,13 +17,6 @@ const FooterSection: React.FC = () => {
             />
           </Link>
         </div>
-        <nav className={styles.nav}>
-          <a href="#home">HOME</a>
-          <a href="#project">PROJECT</a>
-          <a href="#service">SERVICE</a>
-          <a href="#blogs">BLOG</a>
-          <a href="#contact">CONTACT</a>
-        </nav>
         <div className={styles.copyright}>
           Copyright &copy; {new Date().getFullYear()} Keshav Kumar. All Rights Reserved.{" "}
         </div>
