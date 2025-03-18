@@ -98,29 +98,29 @@
 }
 
 .iconContainer {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
+  // margin-bottom: 5px;
 
-  &:nth-child(1) {
-    background: linear-gradient(135deg, #ff6b6b, #ff9e6b);
-  }
+  // &:nth-child(1) {
+  //   background: linear-gradient(135deg, #ff6b6b, #ff9e6b);
+  // }
 
-  &:nth-child(2) {
-    background: linear-gradient(135deg, #6b88ff, #6bffb8);
-  }
+  // &:nth-child(2) {
+  //   background: linear-gradient(135deg, #6b88ff, #6bffb8);
+  // }
 
-  &:nth-child(3) {
-    background: linear-gradient(135deg, #ff6bee, #6b8aff);
-  }
+  // &:nth-child(3) {
+  //   background: linear-gradient(135deg, #ff6bee, #6b8aff);
+  // }
 
-  &:nth-child(4) {
-    background: linear-gradient(135deg, #ffce6b, #ff6b8a);
-  }
+  // &:nth-child(4) {
+  //   background: linear-gradient(135deg, #ffce6b, #ff6b8a);
+  // }
 }
 
 .readMore {

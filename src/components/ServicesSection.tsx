@@ -14,7 +14,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, icon, desc, index }) =
   return (
     <div className={`${styles.serviceCard} ${index === 2 ? styles.highlighted : ''}`}>
       <div className={styles.iconContainer}>
-        <Image src={`/icons/${icon}.svg`} alt={title} width={40} height={40} />
+        <Image src={`/assets/${icon}.png`} alt={title} width={70} height={70} />
       </div>
       <h3>{title}</h3>
       <p>
@@ -35,10 +35,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, icon, desc, index }) =
 
 const ServicesSection: React.FC = () => {
   const services = [
-    { title: 'Web Application Development', icon: 'branding', desc: "Building scalable and high-performance web applications using ReactJS, Next.js, and modern JavaScript frameworks." },
-    { title: 'Enterprise Software Development', icon: 'uiux', desc: "Building business applications with role-based access, compliance, and scalability in mind." },
-    { title: 'DevOps & CI/CD Automation', icon: 'web', desc: "Automating deployments, managing CI/CD pipelines, and implementing Infrastructure as Code (IaC) using Terraform or Ansible." },
-    { title: 'Security & Compliance', icon: 'uiux', desc: "Implementing security best practices such as JWT authentication, OAuth, secure cookies, encryption, and compliance (CFR21, GDPR, SOC2)." },
+    { title: 'Web Application Development', icon: 'icone', desc: "Building scalable and high-performance web applications using ReactJS, Next.js, and modern JavaScript frameworks." },
+    { title: 'Enterprise Software Development', icon: 'icontwo', desc: "Building business applications with role-based access, compliance, and scalability in mind." },
+    { title: 'DevOps & CI/CD Automation', icon: 'iconthree', desc: "Automating deployments, managing CI/CD pipelines, and implementing Infrastructure as Code (IaC) using Terraform or Ansible." },
+    { title: 'Security & Compliance', icon: 'iconfour', desc: "Implementing security best practices such as JWT authentication, OAuth, secure cookies, encryption, and compliance (CFR21, GDPR, SOC2)." },
   ];
 
   return (
