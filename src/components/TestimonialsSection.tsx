@@ -43,7 +43,7 @@ const TestimonialsSection: React.FC = () => {
       position: "CO-FOUNDER, HOMIFII",
       testimonial:
         '"I was impressed by how quickly he understood our business needs and translated them into an intuitive web application. The custom features he developed have significantly streamlined our home automation system."',
-      image: "/images/testimonials/david-chen.png",
+      image: "/assets/kirs.webp",
       rating: 5,
     },
   ];
