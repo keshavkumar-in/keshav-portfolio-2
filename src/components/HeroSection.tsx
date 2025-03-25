@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from '@/styles/components/HeroSection.module.scss';
-import { FaFacebookF, FaLinkedinIn, FaDribbble, FaGithub } from 'react-icons/fa';
+import { FaLinkedinIn, FaGithub } from 'react-icons/fa';
 
 const HeroSection: React.FC = () => {
   return (
