@@ -25,7 +25,7 @@ const TestimonialsSection: React.FC = () => {
       position: "UI/UX DESIGNER, BERT LABS",
       testimonial:
         '"Thanks to your web agency team for their professional work. The website they created for my business exceeded my expectations, and my clients have given positive feedback about its design and user-friendliness."',
-      image: "/images/testimonials/alex-michel.png",
+      image: "/assets/kirs.webp",
       rating: 5,
     },
     {
@@ -34,7 +34,7 @@ const TestimonialsSection: React.FC = () => {
       position: "COE, BIHAR STATE MADRASA EDUCATION BOARD, PATNA",
       testimonial:
         '"Working with this team was a game-changer for our online presence. Their attention to detail and creative solutions helped us achieve a 40% increase in customer engagement within just two months."',
-      image: "/images/testimonials/sarah-johnson.png",
+      image: "/assets/kirs.webp",
       rating: 5,
     },
     {
@@ -90,8 +90,7 @@ const TestimonialsSection: React.FC = () => {
                 <React.Fragment key={index}>
                   {index > 0 && <div className={styles.line}></div>}
                   <button
-                    className={`${styles.dot} ${index === activeTestimonial ? styles.active : ""
-                      }`}
+                    className={`${styles.dot} ${index === activeTestimonial ? styles.active : ""}`}
                     onClick={() => handleDotClick(index)}
                     aria-label={`Go to testimonial ${index + 1}`}
                   >
@@ -167,8 +166,7 @@ const TestimonialsSection: React.FC = () => {
               <React.Fragment key={index}>
                 {index > 0 && <div className={styles.line}></div>}
                 <button
-                  className={`${styles.dot} ${index === activeTestimonial ? styles.active : ""
-                    }`}
+                  className={`${styles.dot} ${index === activeTestimonial ? styles.active : ""}`}
                   onClick={() => handleDotClick(index)}
                   aria-label={`Go to testimonial ${index + 1}`}
                 >

@@ -22,7 +22,7 @@ const BlogSection: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   // Replace with your Dev.to username
-  const username = "lovestaco";
+  const username = "keshav_kumar";
   const devtoProfileUrl = `https://dev.to/${username}`;
 
   useEffect(() => {
