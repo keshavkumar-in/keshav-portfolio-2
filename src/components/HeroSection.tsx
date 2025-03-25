@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from '@/styles/components/HeroSection.module.scss';
-import { FaFacebookF, FaLinkedinIn, FaDribbble } from 'react-icons/fa';
+import { FaFacebookF, FaLinkedinIn, FaDribbble, FaGithub } from 'react-icons/fa';
 
 const HeroSection: React.FC = () => {
   return (
@@ -23,19 +23,16 @@ const HeroSection: React.FC = () => {
               programming and building web applications.
             </p>
             <div className={styles.cta}>
-              <Link href="/contact" className={styles.hireButton}>
+              <Link href="#contact" className={styles.hireButton}>
                 Hire Me Now
                 <span className={styles.arrow}>↗</span>
               </Link>
               <div className={styles.socialLinks}>
-                <Link href="https://facebook.com" aria-label="Facebook" className={styles.socialIcon}>
-                  <FaFacebookF />
-                </Link>
-                <Link href="https://linkedin.com" aria-label="LinkedIn" className={styles.socialIcon}>
+                <Link href="https://www.linkedin.com/in/keshavkumar-in/" aria-label="LinkedIn" className={styles.socialIcon}>
                   <FaLinkedinIn />
                 </Link>
-                <Link href="https://dribbble.com" aria-label="Dribbble" className={styles.socialIcon}>
-                  <FaDribbble />
+                <Link href="https://github.com/keshavkumar-in" aria-label="Github" className={styles.socialIcon}>
+                  <FaGithub />
                 </Link>
               </div>
             </div>

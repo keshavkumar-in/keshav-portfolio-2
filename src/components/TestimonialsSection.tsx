@@ -25,7 +25,7 @@ const TestimonialsSection: React.FC = () => {
       position: "UI/UX DESIGNER, BERT LABS",
       testimonial:
         '"Thanks to your web agency team for their professional work. The website they created for my business exceeded my expectations, and my clients have given positive feedback about its design and user-friendliness."',
-      image: "/assets/kirs.webp",
+      image: "/assets/Kirs.webp",
       rating: 5,
     },
     {
@@ -34,7 +34,7 @@ const TestimonialsSection: React.FC = () => {
       position: "COE, BIHAR STATE MADRASA EDUCATION BOARD, PATNA",
       testimonial:
         '"Working with this team was a game-changer for our online presence. Their attention to detail and creative solutions helped us achieve a 40% increase in customer engagement within just two months."',
-      image: "/assets/kirs.webp",
+      image: "/assets/Kirs.webp",
       rating: 5,
     },
     {
@@ -43,7 +43,7 @@ const TestimonialsSection: React.FC = () => {
       position: "CO-FOUNDER, HOMIFII",
       testimonial:
         '"I was impressed by how quickly he understood our business needs and translated them into an intuitive web application. The custom features he developed have significantly streamlined our home automation system."',
-      image: "/assets/kirs.webp",
+      image: "/assets/Kirs.webp",
       rating: 5,
     },
   ];
