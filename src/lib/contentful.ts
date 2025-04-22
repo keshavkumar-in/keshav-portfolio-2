@@ -1,45 +1,49 @@
-import { createClient } from 'contentful';
+import { createClient } from "contentful";
 
 const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID!,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
+  space:
+    process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID ||
+    process.env.CONTENTFUL_SPACE_ID!,
+  accessToken:
+    process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN ||
+    process.env.CONTENTFUL_ACCESS_TOKEN!,
 });
 
 export interface IPortfolioFields {
-    projectName: string;
-    slug: string;
-    description: string;
-    projectImage: {
-        fields: {
-            file: {
-                url: string;
-            };
-        };
+  projectName: string;
+  slug: string;
+  description: string;
+  projectImage: {
+    fields: {
+      file: {
+        url: string;
+      };
     };
-    developedOn?: string;
-    techUsed: string[];
-    role?: string;
-    demoLink?: string;
-    sourceCode?: string;
+  };
+  developedOn?: string;
+  techUsed: string[];
+  role?: string;
+  demoLink?: string;
+  sourceCode?: string;
 }
 
 export type ContentfulPortfolio = {
-    sys: {
-        id: string;
-    };
-    fields: IPortfolioFields;
+  sys: {
+    id: string;
+  };
+  fields: IPortfolioFields;
 };
 
 export async function getPortfolioItems(): Promise<ContentfulPortfolio[]> {
-    try {
-        const response = await client.getEntries({
-            content_type: 'projectName',
-            order: ['-sys.createdAt'],
-        });
+  try {
+    const response = await client.getEntries({
+      content_type: "projectName",
+      order: ["-sys.createdAt"],
+    });
 
-        return response.items as unknown as ContentfulPortfolio[];
-    } catch (error) {
-        console.error('Error fetching portfolio items:', error);
-        return [];
-    }
-} 
+    return response.items as unknown as ContentfulPortfolio[];
+  } catch (error) {
+    console.error("Error fetching portfolio items:", error);
+    return [];
+  }
+}
