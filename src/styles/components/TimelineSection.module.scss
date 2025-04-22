@@ -121,4 +121,31 @@
   margin: 0;
   line-height: 1.7;
   font-weight: 300;
+
+  ul {
+    list-style: none;
+    padding-left: 1rem;
+    margin: 0;
+
+    li {
+      position: relative;
+      padding-left: 1rem;
+      margin-bottom: 0.5rem;
+
+      &::before {
+        content: "•";
+        position: absolute;
+        left: -1rem;
+      }
+
+      // For nested lists
+      ul {
+        margin-top: 0.5rem;
+
+        li::before {
+          content: "-";
+        }
+      }
+    }
+  }
 }
