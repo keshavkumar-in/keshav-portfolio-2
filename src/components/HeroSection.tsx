@@ -8,13 +8,12 @@ import TypeWriter from "./TypeWriter";
 
 const HeroSection: React.FC = () => {
   const roles = [
-    "Frontend Architect",
-    "Cloud Solutions Expert",
+    "React Developer",
     "Performance Optimizer",
     "Web Accessibility Advocate",
-    "JavaScript Specialist",
-    "React Developer",
-    "API Integration Expert",
+    "UI/UX Enthusiast",
+    "Full Stack Developer",
+    "DevOps Practitioner",
   ];
 
   return (
