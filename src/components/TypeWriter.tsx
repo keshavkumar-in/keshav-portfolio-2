@@ -78,7 +78,7 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
     }, delay);
 
     return () => clearTimeout(timeout);
-  }, [handleTyping]);
+  }, [handleTyping, texts.length]); // Added texts.length as dependency
 
   return (
     <span className={styles.typewriterContainer}>
