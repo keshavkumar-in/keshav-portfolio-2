@@ -20,7 +20,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, icon, desc, index }) =
       <p>
         {desc}
       </p>
-      <div className={styles.readMore}>
+      {/* <div className={styles.readMore}>
         <span>Read More</span>
         <div className={styles.arrow}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,7 +28,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, icon, desc, index }) =
             <path d="M21 12H3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
