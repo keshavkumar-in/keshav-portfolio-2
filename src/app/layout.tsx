@@ -80,7 +80,6 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/site.webmanifest",
-  themeColor: "#ffffff",
   alternates: {
     canonical: "https://keshavkumar.in",
     languages: {
