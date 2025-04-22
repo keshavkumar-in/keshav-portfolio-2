@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.keshavkumar.in",
     siteName: "Keshav Kumar - Full Stack Developer",
-    title: "Keshav Kumar | Full Stack Developer Portfolio",
+    title: "Keshav Kumar | Full Stack Developer",
     description:
       "Professional Full Stack Developer specializing in React, Node.js, and modern web technologies. View my portfolio of projects and get in touch for collaboration.",
     images: [
@@ -70,15 +70,17 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-    other: {
-      rel: "apple-touch-icon-precomposed",
-      url: "/apple-touch-icon-precomposed.png",
-    },
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   manifest: "/site.webmanifest",
+  themeColor: "#ffffff",
   alternates: {
     canonical: "https://keshavkumar.in",
     languages: {
