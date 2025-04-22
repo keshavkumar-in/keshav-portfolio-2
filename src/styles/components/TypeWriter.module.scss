@@ -1,0 +1,43 @@
+.typewriterContainer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  will-change: contents;
+  height: 2em; // Fixed height instead of min-height
+  line-height: 1.5;
+  position: relative;
+  vertical-align: middle;
+}
+
+.typewriterText {
+  display: inline-flex;
+  align-items: center;
+  white-space: pre;
+  min-width: 1ch;
+  position: relative;
+  height: 100%;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  font-weight: bold;
+  color: currentColor;
+  animation: blink 1s steps(2) infinite;
+  transform: translateZ(0);
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1.2em;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

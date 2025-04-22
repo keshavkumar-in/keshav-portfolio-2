@@ -1,11 +1,22 @@
 // HeroSection.tsx
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import styles from '@/styles/components/HeroSection.module.scss';
-import { FaLinkedinIn, FaGithub } from 'react-icons/fa';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import styles from "@/styles/components/HeroSection.module.scss";
+import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+import TypeWriter from "./TypeWriter";
 
 const HeroSection: React.FC = () => {
+  const roles = [
+    "Frontend Architect",
+    "Cloud Solutions Expert",
+    "Performance Optimizer",
+    "Web Accessibility Advocate",
+    "JavaScript Specialist",
+    "React Developer",
+    "API Integration Expert",
+  ];
+
   return (
     <section id="home" className={styles.heroSection}>
       <div className={styles.container}>
@@ -15,12 +26,16 @@ const HeroSection: React.FC = () => {
               Hey <span className={styles.waveEmoji}>👋</span> I&apos;m Keshav
             </h1>
             <div className={styles.professionBox}>
-              <p>Professional Coder</p>
+              <p>
+                <TypeWriter texts={roles} />
+              </p>
             </div>
             <p className={styles.description}>
-              Hi, my name is Keshav Kumar and I began coding when I was in high school.
-              I&apos;ve spent most of my waking hours for the last several years designing,
-              programming and building web applications.
+              🏆 Proven track record of building high-performance web platforms
+              that drive real results — 40% higher engagement, 32% boost in
+              organic traffic, and 70% reduction in form creation time. I bring
+              frontend finesse and backend logic together to solve complex
+              product problems.
             </p>
             <div className={styles.cta}>
               <Link href="#contact" className={styles.hireButton}>
@@ -28,10 +43,18 @@ const HeroSection: React.FC = () => {
                 <span className={styles.arrow}>↗</span>
               </Link>
               <div className={styles.socialLinks}>
-                <Link href="https://www.linkedin.com/in/keshavkumar-in/" aria-label="LinkedIn" className={styles.socialIcon}>
+                <Link
+                  href="https://www.linkedin.com/in/keshavkumar-in/"
+                  aria-label="LinkedIn"
+                  className={styles.socialIcon}
+                >
                   <FaLinkedinIn />
                 </Link>
-                <Link href="https://github.com/keshavkumar-in" aria-label="Github" className={styles.socialIcon}>
+                <Link
+                  href="https://github.com/keshavkumar-in"
+                  aria-label="Github"
+                  className={styles.socialIcon}
+                >
                   <FaGithub />
                 </Link>
               </div>
