@@ -59,6 +59,10 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+
   &:hover {
     transform: translateY(-6px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -84,6 +88,9 @@
 .portfolioContent {
   padding: 20px;
   position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 
   h3 {
     font-size: 24px;
@@ -112,24 +119,28 @@
   position: absolute;
   bottom: 20px;
   right: 20px;
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(to right, #ff5e14, #ffb700);
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(45deg, #ff5e14, #ffb700);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  z-index: 2;
 
   &:hover {
     transform: scale(1.1);
+    background: linear-gradient(45deg, #ffb700, #ff5e14);
   }
 
   svg {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
+    stroke: #ffffff;
+    stroke-width: 2;
   }
 }
 
