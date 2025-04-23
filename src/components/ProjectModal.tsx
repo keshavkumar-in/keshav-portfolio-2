@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { FaGithub, FaExternalLinkAlt, FaTimes } from "react-icons/fa";
+import ReactMarkdown from "react-markdown";
 import styles from "@/styles/components/ProjectModal.module.scss";
 import { PortfolioItem } from "@/types/portfolio";
 
@@ -43,16 +44,11 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
               ))}
             </div>
           </div>
-          {/* <div className={styles.categories}>
-            {project.techUsed.map((tech) => (
-              <span key={tech} className={styles.category}>
-                {tech}
-              </span>
-            ))}
-          </div> */}
 
           <h2 className={styles.title}>{project.projectName}</h2>
-          <p className={styles.description}>{project.description}</p>
+          <div className={styles.description}>
+            <ReactMarkdown>{project.description}</ReactMarkdown>
+          </div>
 
           <div className={styles.links}>
             {project.sourceCode && (

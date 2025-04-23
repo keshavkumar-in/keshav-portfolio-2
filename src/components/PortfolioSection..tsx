@@ -9,7 +9,7 @@ import { ContentfulPortfolio } from "@/lib/contentful";
 
 const SkeletonCard: React.FC = () => {
   const fixedWidths = [60, 80, 100]; // predetermined widths in pixels
-  
+
   return (
     <div className={`${styles.portfolioItem} ${styles.skeleton}`}>
       <div className={`${styles.imageContainer} ${styles.skeletonImage}`} />
@@ -32,7 +32,9 @@ const SkeletonCard: React.FC = () => {
 
 const PortfolioSection: React.FC = () => {
   const [visibleItems, setVisibleItems] = useState<number>(6);
-  const [selectedProject, setSelectedProject] = useState<PortfolioItem | null>(null);
+  const [selectedProject, setSelectedProject] = useState<PortfolioItem | null>(
+    null
+  );
   const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -40,14 +42,14 @@ const PortfolioSection: React.FC = () => {
   useEffect(() => {
     async function fetchPortfolioItems() {
       try {
-        const response = await fetch('/api/portfolio');
-        if (!response.ok) throw new Error('Failed to fetch');
-        const items = await response.json() as ContentfulPortfolio[];
+        const response = await fetch("/api/portfolio");
+        if (!response.ok) throw new Error("Failed to fetch");
+        const items = (await response.json()) as ContentfulPortfolio[];
         const formattedItems: PortfolioItem[] = items.map((item) => ({
           id: item.sys.id,
           projectName: item.fields.projectName,
           slug: item.fields.slug,
-          description: item.fields.description,
+          description: item.fields.description || "",
           projectImage: `https:${item.fields.projectImage.fields.file.url}`,
           developedOn: item.fields.developedOn,
           techUsed: item.fields.techUsed,
@@ -177,7 +179,10 @@ const PortfolioSection: React.FC = () => {
           ) : visibleItems > 6 ? (
             <>
               <p>Want to see less?</p>
-              <button onClick={viewLessItems} className={`${styles.loadMoreButton} ${styles.viewLessButton}`}>
+              <button
+                onClick={viewLessItems}
+                className={`${styles.loadMoreButton} ${styles.viewLessButton}`}
+              >
                 View Less
               </button>
             </>
