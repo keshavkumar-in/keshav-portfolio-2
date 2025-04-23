@@ -21,10 +21,10 @@ const TestimonialsSection: React.FC = () => {
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      name: "Alex Michel",
+      name: "Nipun Krishnan",
       position: "UI/UX DESIGNER, BERT LABS",
       testimonial:
-        '"Thanks to your web agency team for their professional work. The website they created for my business exceeded my expectations, and my clients have given positive feedback about its design and user-friendliness."',
+        '"Working with Keshav has been an inspiring experience—his deep technical knowledge and design sensitivity consistently elevate our UI/UX outcomes. He brings clarity, speed, and innovation to every collaboration."',
       image: "/assets/Kirs.webp",
       rating: 5,
     },
@@ -33,7 +33,7 @@ const TestimonialsSection: React.FC = () => {
       name: "Dr. Md. Noor Islam",
       position: "COE, BIHAR STATE MADRASA EDUCATION BOARD, PATNA",
       testimonial:
-        '"Working with this team was a game-changer for our online presence. Their attention to detail and creative solutions helped us achieve a 40% increase in customer engagement within just two months."',
+        '"Keshav was instrumental in building our IT infrastructure and developing our web systems from scratch. His technical expertise and dedication greatly enhanced our digital capabilities."',
       image: "/assets/Kirs.webp",
       rating: 5,
     },
@@ -76,10 +76,10 @@ const TestimonialsSection: React.FC = () => {
     <section className={styles.testimonialsSection}>
       <div className={styles.container}>
         <div className={styles.badgeWrapper}>
-          <div className={styles.badge}>TESTIMONIALS</div>
+          <div className={styles.badge}>RECOMMENDATIONS</div>
         </div>
         <div className={styles.header}>
-          <h2 className={styles.title}>Clients Testimonials</h2>
+          <h2 className={styles.title}>Professional Endorsements</h2>
           <div
             className={`${styles.navigation} ${styles.desktopNav}`}
             onMouseEnter={() => setIsPaused(true)}
@@ -90,7 +90,9 @@ const TestimonialsSection: React.FC = () => {
                 <React.Fragment key={index}>
                   {index > 0 && <div className={styles.line}></div>}
                   <button
-                    className={`${styles.dot} ${index === activeTestimonial ? styles.active : ""}`}
+                    className={`${styles.dot} ${
+                      index === activeTestimonial ? styles.active : ""
+                    }`}
                     onClick={() => handleDotClick(index)}
                     aria-label={`Go to testimonial ${index + 1}`}
                   >
@@ -112,18 +114,28 @@ const TestimonialsSection: React.FC = () => {
         >
           <div className={styles.testimonialSide}>
             <div className={styles.testimonialImageWrapper}>
-              <div className={`${styles.testimonialImage} ${isAnimating ? styles.slideImage : ''}`}>
+              <div
+                className={`${styles.testimonialImage} ${
+                  isAnimating ? styles.slideImage : ""
+                }`}
+              >
                 <Image
                   src={testimonials[activeTestimonial].image}
                   alt={testimonials[activeTestimonial].name}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  className={styles.image}
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             </div>
           </div>
 
-          <div className={`${styles.contentSide} ${isAnimating ? styles.slideContent : ''}`}>
+          <div
+            className={`${styles.contentSide} ${
+              isAnimating ? styles.slideContent : ""
+            }`}
+          >
             <div className={styles.reviewInfo}>
               <div className={styles.reviewLabel}>Ratings</div>
               <div className={styles.stars}>
@@ -135,13 +147,21 @@ const TestimonialsSection: React.FC = () => {
               </div>
             </div>
 
-            <blockquote className={`${styles.testimonialText} ${isAnimating ? styles.slideText : ''}`}>
+            <blockquote
+              className={`${styles.testimonialText} ${
+                isAnimating ? styles.slideText : ""
+              }`}
+            >
               {testimonials[activeTestimonial].testimonial}
             </blockquote>
 
             <div className={styles.divider}></div>
 
-            <div className={`${styles.authorInfo} ${isAnimating ? styles.slideAuthor : ''}`}>
+            <div
+              className={`${styles.authorInfo} ${
+                isAnimating ? styles.slideAuthor : ""
+              }`}
+            >
               <div className={styles.authorName}>
                 {testimonials[activeTestimonial].name}
               </div>
@@ -150,7 +170,11 @@ const TestimonialsSection: React.FC = () => {
               </div>
             </div>
 
-            <div className={`${styles.testimonialNumber} ${isAnimating ? styles.slideNumber : ''}`}>
+            <div
+              className={`${styles.testimonialNumber} ${
+                isAnimating ? styles.slideNumber : ""
+              }`}
+            >
               {String(testimonials[activeTestimonial].id).padStart(2, "0")}
             </div>
           </div>
@@ -166,7 +190,9 @@ const TestimonialsSection: React.FC = () => {
               <React.Fragment key={index}>
                 {index > 0 && <div className={styles.line}></div>}
                 <button
-                  className={`${styles.dot} ${index === activeTestimonial ? styles.active : ""}`}
+                  className={`${styles.dot} ${
+                    index === activeTestimonial ? styles.active : ""
+                  }`}
                   onClick={() => handleDotClick(index)}
                   aria-label={`Go to testimonial ${index + 1}`}
                 >

@@ -60,7 +60,7 @@ const TimelineSection: React.FC = () => {
       title: "Integrated BCA & MCA",
       organization: "Indira Gandhi National Open University",
       location: "Patna",
-      period: "2016 - 2020",
+      period: "Jan 2016 - Dec 2020",
       description: `
         <ul>
           <li>Maintained <strong>66% academic performance</strong> throughout the integrated dual-degree program</li>
@@ -109,10 +109,10 @@ const TimelineSection: React.FC = () => {
                 </div>
                 <div className={styles.periodBadge}>{item.period}</div>
               </div>
-              <p
+              <div
                 className={styles.description}
                 dangerouslySetInnerHTML={{ __html: item.description }}
-              />
+              ></div>
             </div>
           </div>
         ))}
@@ -124,7 +124,10 @@ const TimelineSection: React.FC = () => {
     <section className={styles.timelineSection} id="resume">
       <div className={styles.container}>
         <div className={styles.columns}>
-          <TimelineColumn title="Professional Experience" items={expertiseItems} />
+          <TimelineColumn
+            title="Professional Experience"
+            items={expertiseItems}
+          />
           <TimelineColumn title="Education Background" items={educationItems} />
         </div>
       </div>
