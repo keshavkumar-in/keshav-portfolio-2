@@ -25,7 +25,7 @@ const TestimonialsSection: React.FC = () => {
       position: "UI/UX DESIGNER, BERT LABS",
       testimonial:
         '"Working with Keshav has been an inspiring experience—his deep technical knowledge and design sensitivity consistently elevate our UI/UX outcomes. He brings clarity, speed, and innovation to every collaboration."',
-      image: "/assets/Kirs.webp",
+      image: "/assets/Nipun.webp",
       rating: 5,
     },
     {
