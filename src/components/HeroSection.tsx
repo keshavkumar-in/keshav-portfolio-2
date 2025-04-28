@@ -84,7 +84,7 @@ const HeroSection: React.FC = () => {
             />
           </div>
           <Image
-            src="/assets/5-2.png"
+            src="/assets/Keshav.webp"
             alt="Keshav Kumar"
             width={400}
             height={500}

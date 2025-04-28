@@ -96,8 +96,8 @@ const ContactSection: React.FC = () => {
 
         <div className={styles.imageContainer}>
           <Image
-            src="/assets/5-2.png"
-            alt="Contact support"
+            src="/assets/Keshav.webp"
+            alt="Keshav Kumar"
             width={600}
             height={700}
             priority
@@ -106,7 +106,7 @@ const ContactSection: React.FC = () => {
             src="/assets/13.png"
             alt="Contact support"
             width={600}
-            height={700}
+            height={600}
             priority
           />
         </div>
