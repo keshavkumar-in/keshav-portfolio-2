@@ -34,7 +34,7 @@ const TestimonialsSection: React.FC = () => {
       position: "COE, BIHAR STATE MADRASA EDUCATION BOARD, PATNA",
       testimonial:
         '"Keshav was instrumental in building our IT infrastructure and developing our web systems from scratch. His technical expertise and dedication greatly enhanced our digital capabilities."',
-      image: "/assets/Kirs.webp",
+      image: "/assets/avatar.webp",
       rating: 5,
     },
     {

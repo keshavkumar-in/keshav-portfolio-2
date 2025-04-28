@@ -10,8 +10,8 @@ const FooterSection: React.FC = () => {
         <div className={styles.logo}>
           <Link href="/" className={styles.logo}>
             <Image
-              src="/assets/Group 47 (1).png"
-              alt="Logo"
+              src="/assets/KK.png"
+              alt="Keshav Kumar Logo"
               width={100}
               height={50}
             />

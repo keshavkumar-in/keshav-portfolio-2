@@ -12,9 +12,21 @@ interface Skill {
 const SkillsSection: React.FC = () => {
   const skills: Skill[] = [
     { name: "ReactJS", percentage: 80, icon: "/assets/icons8-react-js-48.png" },
-    { name: "JavaScript", percentage: 90, icon: "/assets/icons8-javascript-48.png" },
-    { name: "TypeScript", percentage: 70, icon: "/assets/icons8-typescript-48.png" },
-    { name: "TailwindCSS", percentage: 80, icon: "/assets/icons8-tailwindcss-48.png" },
+    {
+      name: "JavaScript",
+      percentage: 90,
+      icon: "/assets/icons8-javascript-48.png",
+    },
+    {
+      name: "TypeScript",
+      percentage: 70,
+      icon: "/assets/icons8-typescript-48.png",
+    },
+    {
+      name: "TailwindCSS",
+      percentage: 80,
+      icon: "/assets/icons8-tailwindcss-48.png",
+    },
     { name: "Git", percentage: 80, icon: "/assets/icons8-git-48.png" },
     { name: "SASS", percentage: 60, icon: "/assets/icons8-sass-48.png" },
   ];
@@ -40,7 +52,7 @@ const SkillsSection: React.FC = () => {
                   alt={skill.name}
                   width={48}
                   height={48}
-                  className={styles.icon}
+                  className={styles.skillIcon}
                 />
               </div>
               <div>

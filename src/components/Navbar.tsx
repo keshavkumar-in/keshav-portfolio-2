@@ -53,8 +53,8 @@ const Navbar: React.FC = () => {
       <div className={styles.container}>
         <Link href="/" className={styles.logo}>
           <Image
-            src="/assets/Group 47 (1).png"
-            alt="Keshav Logo"
+            src="/assets/KK.png"
+            alt="Keshav Kumar Logo"
             width={60}
             height={40}
           />

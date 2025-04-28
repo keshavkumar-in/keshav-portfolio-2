@@ -100,12 +100,6 @@
     box-shadow: none;
   }
 
-  .icon {
-    width: 60%;
-    height: 60%;
-    object-fit: contain;
-  }
-
   .percentage {
     font-size: 2rem;
     font-weight: 700;
@@ -121,4 +115,10 @@
     position: relative;
     z-index: 1;
   }
+}
+
+.skillIcon {
+  width: 48px;
+  height: 48px; // Both width and height specified
+  object-fit: contain;
 }
