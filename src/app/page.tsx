@@ -23,7 +23,7 @@ export default function Home() {
       <SkillsSection />
       <TimelineSection />
       <TestimonialsSection />
-      <ContactSection />
+      {/* <ContactSection /> */}
       <BlogSection />
       <FreelanceSection />
       <FooterSection />

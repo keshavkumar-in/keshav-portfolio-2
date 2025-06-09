@@ -4,7 +4,7 @@ import styles from "@/styles/components/FreelanceSection.module.scss";
 
 const FreelanceSection: React.FC = () => {
   return (
-    <section className={styles.freelanceSection}>
+    <section className={styles.freelanceSection} id="contact">
       <div className={styles.container}>
         <h1 className={styles.title}>
           Hello <span className={styles.wave}>👋</span> I&apos;m available for
@@ -21,9 +21,9 @@ const FreelanceSection: React.FC = () => {
             <FaLinkedin className={styles.linkedinIcon} /> Chat now
           </a>
         </p>
-        <a href="#contact" className={styles.hireButton}>
+        {/* <a href="#contact" className={styles.hireButton}>
           Hire Me Now <span className={styles.arrow}>↗</span>
-        </a>
+        </a> */}
       </div>
     </section>
   );

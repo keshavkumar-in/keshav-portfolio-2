@@ -16,11 +16,11 @@ const Navbar: React.FC = () => {
     { name: "SERVICES", path: "services" },
     { name: "PORTFOLIO", path: "portfolio" },
     { name: "RESUME", path: "resume" },
-    { name: "CONTACT", path: "contact" },
     { name: "BLOGS", path: "blogs" },
+    { name: "CONTACT", path: "contact" },
   ];
 
-  const activeSection = useScrollSpy(navItems.map(item => item.path));
+  const activeSection = useScrollSpy(navItems.map((item) => item.path));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,11 +39,14 @@ const Navbar: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+  const handleClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string
+  ) => {
     e.preventDefault();
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
       setIsMenuOpen(false); // Close mobile menu after clicking
     }
   };
@@ -78,10 +81,11 @@ const Navbar: React.FC = () => {
           ))}
         </div>
 
-        <Link 
-          href="#contact" 
+        <Link
+          href="https://www.linkedin.com/in/keshavkumar-in"
           className={styles.talkButton}
-          onClick={(e) => handleClick(e, 'contact')}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Let&apos;s Talk <span className={styles.chatIcon}>💬</span>
         </Link>

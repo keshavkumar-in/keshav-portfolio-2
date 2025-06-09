@@ -21,6 +21,15 @@ const TestimonialsSection: React.FC = () => {
   const testimonials: Testimonial[] = [
     {
       id: 1,
+      name: "Dr. Ramesh Potnuri",
+      position: "LEAD RESEARCH SCIENTIST, BERT LABS",
+      testimonial:
+        '"Keshav is a smart, dependable, and technically strong professional with sharp troubleshooting skills and up-to-date development knowledge. He’s a fast learner who consistently delivers precise, solution-oriented results."',
+      image: "/assets/Ramesh.webp",
+      rating: 5,
+    },
+    {
+      id: 2,
       name: "Nipun Krishnan",
       position: "UI/UX DESIGNER, BERT LABS",
       testimonial:
@@ -29,7 +38,7 @@ const TestimonialsSection: React.FC = () => {
       rating: 5,
     },
     {
-      id: 2,
+      id: 3,
       name: "Dr. Md. Noor Islam",
       position: "COE, BIHAR STATE MADRASA EDUCATION BOARD, PATNA",
       testimonial:
@@ -38,7 +47,7 @@ const TestimonialsSection: React.FC = () => {
       rating: 5,
     },
     {
-      id: 3,
+      id: 4,
       name: "Kirs",
       position: "CO-FOUNDER, HOMIFII",
       testimonial:

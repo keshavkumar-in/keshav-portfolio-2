@@ -1,79 +1,22 @@
-// components/PortfolioSection.tsx
 "use client";
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import React, { useState } from "react";
 import styles from "@/styles/components/PortfolioSection.module.scss";
+import { PortfolioCard } from "./Portfolio/PortfolioCard";
+import { LoadMore } from "./Portfolio/LoadMore";
+import { SkeletonCard } from "./Portfolio/SkeletonCard";
 import ProjectModal from "./ProjectModal";
+import { usePortfolio } from "@/hooks/usePortfolio";
 import { PortfolioItem } from "@/types/portfolio";
-import { ContentfulPortfolio } from "@/lib/contentful";
-
-const SkeletonCard: React.FC = () => {
-  const fixedWidths = [60, 80, 100]; // predetermined widths in pixels
-
-  return (
-    <div className={`${styles.portfolioItem} ${styles.skeleton}`}>
-      <div className={`${styles.imageContainer} ${styles.skeletonImage}`} />
-      <div className={styles.portfolioContent}>
-        <div className={styles.categories}>
-          {[1, 2, 3].map((i) => (
-            <span
-              key={i}
-              className={`${styles.category} ${styles.skeletonText}`}
-              style={{ width: `${fixedWidths[i - 1]}px` }}
-            />
-          ))}
-        </div>
-        <div className={`${styles.skeletonText} ${styles.skeletonTitle}`} />
-        <div className={`${styles.viewButton} ${styles.skeletonButton}`} />
-      </div>
-    </div>
-  );
-};
 
 const PortfolioSection: React.FC = () => {
   const [visibleItems, setVisibleItems] = useState<number>(6);
   const [selectedProject, setSelectedProject] = useState<PortfolioItem | null>(
     null
   );
-  const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    async function fetchPortfolioItems() {
-      try {
-        const response = await fetch("/api/portfolio");
-        if (!response.ok) throw new Error("Failed to fetch");
-        const items = (await response.json()) as ContentfulPortfolio[];
-        const formattedItems: PortfolioItem[] = items.map((item) => ({
-          id: item.sys.id,
-          projectName: item.fields.projectName,
-          slug: item.fields.slug,
-          description: item.fields.description || "",
-          projectImage: `https:${item.fields.projectImage.fields.file.url}`,
-          developedOn: item.fields.developedOn,
-          techUsed: item.fields.techUsed,
-          role: item.fields.role,
-          demoLink: item.fields.demoLink,
-          sourceCode: item.fields.sourceCode,
-        }));
-        setPortfolioItems(formattedItems);
-        setIsLoading(false);
-      } catch (err) {
-        setError(`Failed to load portfolio items, ${err}`);
-        setIsLoading(false);
-      }
-    }
-
-    fetchPortfolioItems();
-  }, []);
+  const { portfolioItems, isLoading, error } = usePortfolio();
 
   const loadMoreItems = () => {
-    setVisibleItems((prevValue) =>
-      prevValue + 3 > portfolioItems.length
-        ? portfolioItems.length
-        : prevValue + 3
-    );
+    setVisibleItems((prev) => Math.min(prev + 3, portfolioItems.length));
   };
 
   const viewLessItems = () => {
@@ -89,7 +32,7 @@ const PortfolioSection: React.FC = () => {
             <h2>My Recent Work</h2>
           </div>
           <div className={styles.portfolioGrid}>
-            {[1, 2, 3, 4, 5, 6].map((i) => (
+            {Array.from({ length: 6 }).map((_, i) => (
               <SkeletonCard key={i} />
             ))}
           </div>
@@ -121,74 +64,22 @@ const PortfolioSection: React.FC = () => {
 
         <div className={styles.portfolioGrid}>
           {portfolioItems.slice(0, visibleItems).map((item) => (
-            <div key={item.id} className={styles.portfolioItem}>
-              <div className={styles.imageContainer}>
-                <Image
-                  src={item.projectImage}
-                  alt={item.projectName}
-                  width={400}
-                  height={300}
-                  className={styles.portfolioImage}
-                />
-              </div>
-              <div className={styles.portfolioContent}>
-                <div className={styles.categories}>
-                  {item.techUsed.map((tech) => (
-                    <span
-                      key={`${item.id}-${tech}`}
-                      className={styles.category}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <h3>{item.projectName}</h3>
-                <div
-                  className={styles.viewButton}
-                  onClick={() => setSelectedProject(item)}
-                >
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7 17L17 7M17 7H7M17 7V17"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
+            <PortfolioCard
+              key={item.id}
+              item={item}
+              onSelect={setSelectedProject}
+            />
           ))}
         </div>
 
-        <div className={styles.loadMoreContainer}>
-          {visibleItems < portfolioItems.length ? (
-            <>
-              <p>Are you interested to show more portfolios?</p>
-              <button onClick={loadMoreItems} className={styles.loadMoreButton}>
-                Load More
-              </button>
-            </>
-          ) : visibleItems > 6 ? (
-            <>
-              <p>Want to see less?</p>
-              <button
-                onClick={viewLessItems}
-                className={`${styles.loadMoreButton} ${styles.viewLessButton}`}
-              >
-                View Less
-              </button>
-            </>
-          ) : null}
-        </div>
+        <LoadMore
+          visibleItems={visibleItems}
+          totalItems={portfolioItems.length}
+          onLoadMore={loadMoreItems}
+          onViewLess={viewLessItems}
+        />
       </div>
+
       <ProjectModal
         project={selectedProject!}
         isOpen={!!selectedProject}

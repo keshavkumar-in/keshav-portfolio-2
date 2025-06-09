@@ -4,9 +4,9 @@ export interface PortfolioItem {
   slug: string;
   description: string;
   projectImage: string;
-  developedOn?: string;
+  developedOn: string; // Changed from optional to required with default value
   techUsed: string[];
-  role?: string;
+  role: string;
   demoLink?: string;
   sourceCode?: string;
-} 
+}

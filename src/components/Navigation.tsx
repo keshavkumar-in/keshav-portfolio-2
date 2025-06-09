@@ -1,17 +1,27 @@
-import React from 'react';
-import Link from 'next/link';
-import { useScrollSpy } from '@/hooks/useScrollSpy';
-import styles from '@/styles/components/Navigation.module.scss';
+import React from "react";
+import Link from "next/link";
+import { useScrollSpy } from "@/hooks/useScrollSpy";
+import styles from "@/styles/components/Navigation.module.scss";
 
 const Navigation: React.FC = () => {
-  const sections = ['home', 'services', 'portfolio', 'resume', 'contact'];
+  const sections = [
+    "home",
+    "services",
+    "portfolio",
+    "resume",
+    "blogs",
+    "contact",
+  ];
   const activeSection = useScrollSpy(sections);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+  const handleClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string
+  ) => {
     e.preventDefault();
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -22,7 +32,9 @@ const Navigation: React.FC = () => {
           <li key={section}>
             <Link
               href={`#${section}`}
-              className={`${styles.navLink} ${activeSection === section ? styles.active : ''}`}
+              className={`${styles.navLink} ${
+                activeSection === section ? styles.active : ""
+              }`}
               onClick={(e) => handleClick(e, section)}
             >
               {section.charAt(0).toUpperCase() + section.slice(1)}
@@ -34,4 +46,4 @@ const Navigation: React.FC = () => {
   );
 };
 
-export default Navigation; 
+export default Navigation;
