@@ -16,7 +16,7 @@ const TimelineSection: React.FC = () => {
       title: "Research Engineer II",
       organization: "Bert Labs",
       location: "Bangalore",
-      period: "Sep 2024 - Present",
+      period: "Sep 2024 - Jun 2025",
       description: `
         <ul>
           <li>Built responsive frontend platform with <strong>Next.js 15</strong> and <strong>Chakra UI</strong>. Improved user engagement by <strong>40%</strong></li>
