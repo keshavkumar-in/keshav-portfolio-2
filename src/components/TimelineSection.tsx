@@ -1,5 +1,6 @@
 // TimelineSection.tsx
-import React from "react";
+'use client';
+import { useState } from "react";
 import styles from "@/styles/components/TimelineSection.module.scss";
 
 interface TimelineItem {
@@ -85,40 +86,72 @@ const TimelineSection: React.FC = () => {
     },
   ];
 
+  // Helper to extract <li> items from description HTML
+  const getListItems = (description: string) => {
+    const match = description.match(/<li>([\s\S]*?)<\/li>/g) || [];
+    return match.map((li) => li.replace(/<\/?li>/g, ""));
+  };
+
   const TimelineColumn = ({
     title,
     items,
   }: {
     title: string;
     items: TimelineItem[];
-  }) => (
-    <div className={styles.column}>
-      <h2 className={styles.columnTitle}>{title}</h2>
-      <div className={styles.timeline}>
-        {items.map((item, index) => (
-          <div key={index} className={styles.timelineItem}>
-            <div className={styles.timelineDot}></div>
-            <div className={styles.timelineCard}>
-              <div className={styles.cardHeader}>
-                <div className={styles.titleInfo}>
-                  <h3 className={styles.itemTitle}>{item.title}</h3>
-                  <p className={styles.organization}>
-                    {item.organization}
-                    {item.location ? `, ${item.location}` : ""}
-                  </p>
+  }) => {
+    const [expanded, setExpanded] = useState<{ [key: number]: boolean }>({});
+
+    return (
+      <div className={styles.column}>
+        <h2 className={styles.columnTitle}>{title}</h2>
+        <div className={styles.timeline}>
+          {items.map((item, index) => {
+            const listItems = getListItems(item.description);
+            const isExpanded = expanded[index] || false;
+            const visibleItems = isExpanded ? listItems : listItems.slice(0, 2);
+
+            return (
+              <div key={index} className={styles.timelineItem}>
+                <div className={styles.timelineDot}></div>
+                <div className={styles.timelineCard}>
+                  <div className={styles.cardHeader}>
+                    <div className={styles.titleInfo}>
+                      <h3 className={styles.itemTitle}>{item.title}</h3>
+                      <p className={styles.organization}>
+                        {item.organization}
+                        {item.location ? `, ${item.location}` : ""}
+                      </p>
+                    </div>
+                    <div className={styles.periodBadge}>{item.period}</div>
+                  </div>
+                  <div className={styles.description}>
+                    <ul>
+                      {visibleItems.map((li, i) => (
+                        <li key={i} dangerouslySetInnerHTML={{ __html: li }} />
+                      ))}
+                    </ul>
+                    {listItems.length > 2 && (
+                      <button
+                        className={styles.readMoreBtn}
+                        onClick={() =>
+                          setExpanded((prev) => ({
+                            ...prev,
+                            [index]: !isExpanded,
+                          }))
+                        }
+                      >
+                        {isExpanded ? "Read less" : "Read more"}
+                      </button>
+                    )}
+                  </div>
                 </div>
-                <div className={styles.periodBadge}>{item.period}</div>
               </div>
-              <div
-                className={styles.description}
-                dangerouslySetInnerHTML={{ __html: item.description }}
-              ></div>
-            </div>
-          </div>
-        ))}
+            );
+          })}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <section className={styles.timelineSection} id="resume">
