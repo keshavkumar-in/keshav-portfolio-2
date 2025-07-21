@@ -96,9 +96,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <GoogleTagManager />
+        {/* Only static tags/components here */}
       </head>
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning>
+        <GoogleTagManager />
         {children}
         <ScrollToTop />
       </body>

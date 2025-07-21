@@ -10,7 +10,7 @@ const StatsSection: React.FC = () => {
         <div className={styles.statsGrid}>
           <div className={styles.statBox}>
             <h2 className={styles.statNumber}>
-              05<span className={styles.plus}>+</span>
+              06<span className={styles.plus}>+</span>
             </h2>
             <p className={styles.statLabel}>Years of Experience</p>
           </div>
