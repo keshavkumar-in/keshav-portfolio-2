@@ -71,8 +71,8 @@ const HeroSection: React.FC = () => {
             <Image
               src="/assets/1.png"
               alt="Yellow background"
-              width={450}
-              height={550}
+              width={480}
+              height={580}
               className={styles.yellowBackground}
             />
             <Image
@@ -84,10 +84,10 @@ const HeroSection: React.FC = () => {
             />
           </div>
           <Image
-            src="/assets/Keshav.webp"
+            src="/assets/Keshav_new.webp"
             alt="Keshav Kumar"
-            width={400}
-            height={500}
+            width={300}
+            height={400}
             priority
             className={styles.profileImage}
           />
