@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clear": "rm -rf .next node_modules package-lock.json && npm install"
   },
   "dependencies": {
     "contentful": "^11.12.5",
@@ -24,7 +25,9 @@
     "@types/react-dom": "^19.2.3",
     "eslint": "^10.5.0",
     "eslint-config-next": "^16.2.9",
-    "typescript": "^5.9.3",
-    "postcss": ">=8.5.10"
+    "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "postcss": "^8.5.10"
   }
 }
