@@ -61,21 +61,15 @@ export const metadata: Metadata = {
     title: "Keshav Kumar — Full Stack Developer for hire",
     description:
       "Freelance full stack developer. I build and rescue web platforms that hold up at scale. See the case studies.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Keshav Kumar — Full Stack Developer",
-      },
-    ],
+    // No `images` here on purpose. src/app/opengraph-image.tsx generates the
+    // card and Next wires the tags itself; a hand-written path is what broke
+    // previously, pointing at an /og-image.jpg that was never in the repo.
   },
   twitter: {
     card: "summary_large_image",
     title: "Keshav Kumar — Full Stack Developer for hire",
     description:
       "Freelance full stack developer. I build and rescue web platforms that hold up at scale.",
-    images: ["/twitter-image.jpg"],
     creator: "@keshavcodes",
   },
   robots: {
@@ -92,6 +86,8 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
+      // Preferred where supported — stays sharp on any display density.
+      { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
     ],

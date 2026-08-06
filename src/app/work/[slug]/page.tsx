@@ -31,6 +31,9 @@ export async function generateMetadata({
   const description =
     project.caseStudy?.headline ?? project.description.slice(0, 155);
 
+  // No `images` on either block: opengraph-image.tsx in this folder generates
+  // a branded card per case study, and an explicit `images` here would
+  // override it with the raw Contentful screenshot.
   return {
     title: project.projectName,
     description,
@@ -39,15 +42,11 @@ export async function generateMetadata({
       description,
       type: "article",
       url: `/work/${project.slug}`,
-      images: project.projectImage
-        ? [{ url: project.projectImage, alt: project.projectName }]
-        : undefined,
     },
     twitter: {
       card: "summary_large_image",
       title: `${project.projectName} — case study`,
       description,
-      images: project.projectImage ? [project.projectImage] : undefined,
     },
     alternates: { canonical: `/work/${project.slug}` },
   };

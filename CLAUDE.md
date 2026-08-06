@@ -83,9 +83,21 @@ The recurring device is the **delta** (`4.5s → 0.6s`), rendered by `src/compon
 
 All images go through `next/image`, so every remote host must be allowlisted in `next.config.ts` `images.remotePatterns` (currently Contentful, dev.to, Cloudinary). A new image source without an entry there fails at runtime, not build time.
 
+### Icons and social cards
+
+Both are generated; neither is hand-exported.
+
+**Icons.** `scripts/generate-icons.mjs` draws the mark — an ink `K` on a volt tile — and rasterises every size with sharp. Run `node scripts/generate-icons.mjs` after changing it and commit the output; it is not part of the build. The `K` is **explicit vector paths, not an SVG `<text>` element**, so the result does not depend on Archivo being installed on the machine that rasterises it. The script also hand-writes the `.ico` container (6-byte header, one 16-byte entry per size, PNG payloads) because sharp cannot encode ICO.
+
+**Social cards.** `src/app/opengraph-image.tsx` and `src/app/work/[slug]/opengraph-image.tsx` render at build time via `next/og`. Next wires the meta tags itself — **do not add `openGraph.images` or `twitter.images` to a `metadata` export**, because an explicit path overrides the generated card. That is exactly how the previous setup broke: it pointed at an `/og-image.jpg` that was never in the repo, so every shared link had a blank preview.
+
+Two traps in these files:
+
+- `params` is a **Promise** and must be awaited. Typing it as a plain object compiles and then silently yields `undefined`, rendering every case study with the same generic card.
+- Fonts must be passed to `ImageResponse` with a matching `fontWeight` in the style — hence the `OG_DISPLAY` / `OG_MONO` style fragments in `src/lib/og.ts`, which carry family and weight together. Satori resolves an unspecified weight to 400, finds no 400 face, and renders the display type thin. `loadGoogleFont` accepts truetype, opentype, or **woff** (not woff2, which satori cannot decode); Google currently answers with woff. Font failures log a warning and fall back rather than failing the build.
+
 ## Repo quirks
 
 - `public/assets/KK.png` is the old orange-gradient logo and is **unused** — the nav wordmark is type. Several other `/assets` files (icon*.png, quote.png, 1.png…) are likewise orphaned by the redesign.
-- Favicons and `og-image.jpg` still carry the previous brand and have not been regenerated.
 - `src/app/sitemap.ts` generates the sitemap; there is no hand-maintained `public/sitemap.xml` any more.
 - Server actions live in `src/app/actions/`. A `"use server"` module may only export async functions — shared constants for the contact form therefore live in `src/lib/contact.ts`. Exporting an array from the action file makes it arrive on the client as a function reference.
