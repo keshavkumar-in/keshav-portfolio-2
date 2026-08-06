@@ -1,0 +1,79 @@
+@use "../mixins" as *;
+
+.section {
+  @include section;
+}
+
+.inner {
+  @include shell;
+}
+
+.all {
+  color: var(--bone);
+  transition: color var(--dur-fast) var(--ease);
+
+  &:hover {
+    color: var(--volt);
+  }
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+  list-style: none;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card {
+  border: 1px solid var(--ink-line);
+  transition: border-color var(--dur) var(--ease);
+
+  &:hover {
+    border-color: var(--volt);
+  }
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  height: 100%;
+  padding-bottom: var(--space-lg);
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--ink-raised);
+  border-bottom: 1px solid var(--ink-line);
+}
+
+.image {
+  object-fit: cover;
+  filter: grayscale(1);
+  transition: filter var(--dur-slow) var(--ease);
+}
+
+.card:hover .image {
+  filter: grayscale(0);
+}
+
+.meta {
+  @include label;
+  display: flex;
+  gap: var(--space-xs);
+  padding-inline: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.title {
+  padding-inline: var(--space-md);
+  font-size: var(--step-heading);
+}
+
+.excerpt {
+  padding-inline: var(--space-md);
+  font-size: var(--step-small);
+  color: var(--smoke);
+}

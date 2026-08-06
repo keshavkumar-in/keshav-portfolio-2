@@ -1,0 +1,36 @@
+@use "../mixins" as *;
+
+.heading {
+  margin-bottom: var(--space-xl);
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-bottom: var(--space-sm);
+  // The hairline under the eyebrow is the section's structural marker.
+  border-bottom: 1px solid var(--ink-line);
+}
+
+.label {
+  @include label;
+  color: var(--volt);
+}
+
+.aside {
+  @include label;
+}
+
+.title {
+  margin-top: var(--space-lg);
+  font-size: var(--step-display);
+  text-transform: uppercase;
+}
+
+.lede {
+  max-width: var(--measure);
+  margin-top: var(--space-md);
+  color: var(--smoke);
+}

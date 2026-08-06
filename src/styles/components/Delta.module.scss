@@ -1,0 +1,61 @@
+@use "../mixins" as *;
+
+.delta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.pair {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3em;
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: var(--tracking-display);
+  // The figures are numerals set beside each other; tabular keeps the two
+  // sides of the arrow optically aligned.
+  font-variant-numeric: tabular-nums;
+}
+
+.from {
+  color: var(--smoke-dim);
+  // The "before" is struck through — it is the state that no longer exists.
+  text-decoration: line-through;
+  text-decoration-thickness: 0.06em;
+}
+
+.arrow {
+  color: var(--volt);
+  font-weight: 700;
+}
+
+.to {
+  color: var(--bone);
+}
+
+.label {
+  @include label;
+  color: var(--smoke);
+}
+
+/* Used once per page, in a case-study header. */
+.lead .pair {
+  font-size: var(--step-display);
+}
+
+/* Inside work panels and metric grids. */
+.panel .pair {
+  font-size: var(--step-title);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

@@ -1,0 +1,58 @@
+@use "../mixins" as *;
+
+.page {
+  padding-top: var(--nav-h);
+}
+
+.header {
+  padding-block: var(--space-2xl) var(--space-xl);
+}
+
+.headerInner {
+  @include shell;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.eyebrow {
+  @include label;
+  padding-bottom: var(--space-sm);
+  color: var(--volt);
+  border-bottom: 1px solid var(--ink-line);
+}
+
+.title {
+  font-size: var(--step-hero);
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+}
+
+.lede {
+  max-width: var(--measure);
+  color: var(--smoke);
+}
+
+.panels {
+  @include shell;
+  display: flex;
+  flex-direction: column;
+}
+
+.cta {
+  padding-block: var(--space-2xl);
+}
+
+.ctaInner {
+  @include shell;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+
+.ctaTitle {
+  font-size: var(--step-display);
+  text-transform: uppercase;
+}

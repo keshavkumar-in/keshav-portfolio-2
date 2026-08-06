@@ -1,0 +1,153 @@
+@use "../mixins" as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.row {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.label {
+  @include label;
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-body);
+  font-size: var(--step-body);
+  color: var(--bone);
+  background: var(--ink);
+  border: 1px solid var(--ink-line);
+  transition: border-color var(--dur-fast) var(--ease);
+
+  &::placeholder {
+    color: var(--smoke-dim);
+  }
+
+  &:hover {
+    border-color: var(--ink-line-strong);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--volt);
+  }
+
+  &[aria-invalid="true"] {
+    border-color: var(--danger);
+  }
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.select {
+  // Native arrow is removed; this one matches the mono/hairline system.
+  appearance: none;
+  padding-right: var(--space-xl);
+  background-image: linear-gradient(45deg, transparent 50%, var(--smoke) 50%),
+    linear-gradient(135deg, var(--smoke) 50%, transparent 50%);
+  background-position: calc(100% - 20px) center, calc(100% - 14px) center;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+
+  option {
+    background: var(--ink);
+    color: var(--bone);
+  }
+}
+
+.error {
+  font-family: var(--font-mono);
+  font-size: var(--step-small);
+  color: var(--danger);
+}
+
+.formError {
+  padding: var(--space-md);
+  font-size: var(--step-small);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+
+.honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.submit {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  font-family: var(--font-mono);
+  font-size: var(--step-label);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--volt-ink);
+  background: var(--volt);
+  border: 1px solid var(--volt);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease);
+
+  &:hover:not(:disabled) {
+    background: var(--bone);
+    border-color: var(--bone);
+  }
+
+  &:disabled {
+    cursor: wait;
+    opacity: 0.6;
+  }
+}
+
+.arrow {
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.submit:hover:not(:disabled) .arrow {
+  transform: translateX(4px);
+}
+
+.done {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-xl);
+  border: 1px solid var(--volt);
+}
+
+.doneTitle {
+  font-family: var(--font-display);
+  font-size: var(--step-title);
+  font-weight: 900;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  color: var(--volt);
+}
+
+.doneBody {
+  color: var(--smoke);
+}

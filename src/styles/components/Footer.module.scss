@@ -1,0 +1,75 @@
+@use "../mixins" as *;
+
+.footer {
+  background: var(--ink-sunken);
+  border-top: 1px solid var(--ink-line);
+}
+
+.inner {
+  @include shell;
+  display: grid;
+  gap: var(--space-xl);
+  padding-block: var(--space-2xl);
+  grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(0, 1fr));
+
+  @include below($bp-md) {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: var(--step-title);
+  font-weight: 900;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+}
+
+.dot {
+  color: var(--volt);
+}
+
+.tagline {
+  @include label;
+}
+
+.links,
+.reach {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.link {
+  @include label;
+  color: var(--bone);
+  transition: color var(--dur-fast) var(--ease);
+
+  &:hover {
+    color: var(--volt);
+  }
+}
+
+.baseline {
+  border-top: 1px solid var(--ink-line);
+}
+
+.baselineInner {
+  @include shell;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding-block: var(--space-md);
+
+  p {
+    @include label;
+  }
+}

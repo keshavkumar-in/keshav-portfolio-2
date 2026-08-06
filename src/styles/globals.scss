@@ -1,18 +1,60 @@
-* {
+@use "tokens";
+@use "mixins" as *;
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-html,
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  // Anchor targets must clear the fixed nav.
+  scroll-padding-top: calc(var(--nav-h) + var(--space-lg));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background-color: #1a1a1a;
-  color: white;
-  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  font-size: var(--step-body);
+  line-height: var(--leading-body);
+  background-color: var(--ink);
+  color: var(--bone);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 a {
@@ -20,33 +62,75 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+// Square by default — the system has no border radius anywhere.
+button,
+input,
+textarea,
+select {
+  border-radius: 0;
+}
+
+::selection {
+  background: var(--volt);
+  color: var(--volt-ink);
+}
+
+:focus-visible {
+  @include focus-ring;
+}
+
+// Skip link — visible only once focused.
+.skipLink {
+  position: absolute;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  z-index: 200;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--volt);
+  color: var(--volt-ink);
+  font-family: var(--font-mono);
+  font-size: var(--step-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  transform: translateY(-200%);
+
+  &:focus-visible {
+    transform: translateY(0);
   }
 }
 
-/* For WebKit browsers */
+/* Scrollbar — flat, squared, matching the hairline system. */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
-  border-radius: 20px;
+  background: var(--ink-sunken);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #ff5e14, #ffb700);
-  border-radius: 20px;
+  background: var(--ink-line-strong);
+
+  &:hover {
+    background: var(--volt);
+  }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #ff5e14, #ffb700);
-}
-
-/* For Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #ff5e14 #1a1a1a;
+  scrollbar-color: var(--ink-line-strong) var(--ink-sunken);
 }

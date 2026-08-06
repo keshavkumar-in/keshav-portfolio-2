@@ -1,0 +1,23 @@
+@use "../mixins" as *;
+
+.section {
+  @include section;
+}
+
+.inner {
+  @include shell;
+}
+
+.panels {
+  display: flex;
+  flex-direction: column;
+}
+
+.all {
+  color: var(--bone);
+  transition: color var(--dur-fast) var(--ease);
+
+  &:hover {
+    color: var(--volt);
+  }
+}

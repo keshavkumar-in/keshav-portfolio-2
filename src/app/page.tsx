@@ -1,32 +1,28 @@
 // src/app/page.tsx
-import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import StatsSection from "@/components/StatsSection";
-import ServicesSection from "@/components/ServicesSection";
-import PortfolioSection from "@/components/PortfolioSection.";
-import SkillsSection from "@/components/SkillsSection";
-import TimelineSection from "@/components/TimelineSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-// import ContactSection from "@/components/ContactSection";
-import BlogSection from "@/components/BlogSection";
-import FreelanceSection from "@/components/FreelanceSection";
-import FooterSection from "@/components/FooterSection";
+import About from "@/components/home/About";
+import Contact from "@/components/home/Contact";
+import Hero from "@/components/home/Hero";
+import Proof from "@/components/home/Proof";
+import SelectedWork from "@/components/home/SelectedWork";
+import Services from "@/components/home/Services";
+import Writing from "@/components/home/Writing";
+import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Navbar />
-      <HeroSection />
-      <StatsSection />
-      <ServicesSection />
-      <PortfolioSection />
-      <SkillsSection />
-      <TimelineSection />
-      <TestimonialsSection />
-      {/* <ContactSection /> */}
-      <BlogSection />
-      <FreelanceSection />
-      <FooterSection />
-    </main>
+      <main id="main">
+        <Hero />
+        <SelectedWork />
+        <Services />
+        <Proof />
+        <About />
+        <Writing />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   );
 }
