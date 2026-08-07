@@ -10,10 +10,38 @@
     border-color var(--dur) var(--ease);
 }
 
-.scrolled {
-  background: rgba(13, 13, 12, 0.86);
-  backdrop-filter: blur(12px);
+/**
+ * Opaque by default, whenever the bar has to sit over content — scrolled away
+ * from the top, or with the mobile menu open.
+ *
+ * This used to be a flat `rgba(--ink, 0.86)` + backdrop-filter, which relies on
+ * the blur rendering to be legible. Where the blur does not render the bar is
+ * simply 14% transparent, and the page's oversized bone display type reads
+ * straight through it. That is what happened on mobile: there was no
+ * `-webkit-backdrop-filter`, which older iOS Safari requires, so it fell back
+ * to translucent-with-no-blur.
+ */
+.scrolled,
+.solid {
+  background: var(--ink);
   border-bottom-color: var(--ink-line);
+}
+
+/**
+ * Translucency is an enhancement, not the baseline. It applies only where the
+ * blur that makes it legible actually renders, and only at desktop widths —
+ * on a small screen large type sliding under a translucent bar is hard to read
+ * even when the blur works.
+ */
+@supports (backdrop-filter: blur(12px)) or
+  (-webkit-backdrop-filter: blur(12px)) {
+  @include above($bp-lg) {
+    .scrolled {
+      background: var(--ink-veil);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+  }
 }
 
 .inner {

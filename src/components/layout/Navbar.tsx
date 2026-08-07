@@ -53,7 +53,18 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
+    // `solid` covers the case the scroll position does not: the menu opened at
+    // the top of the page, where the bar is otherwise transparent and the hero
+    // shows through it behind the open overlay.
+    <nav
+      className={[
+        styles.navbar,
+        scrolled ? styles.scrolled : "",
+        isMenuOpen ? styles.solid : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
       <div className={styles.inner}>
         <Link href="/" className={styles.wordmark} onClick={() => setIsMenuOpen(false)}>
           Keshav
