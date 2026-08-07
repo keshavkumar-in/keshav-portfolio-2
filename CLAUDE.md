@@ -98,6 +98,6 @@ Two traps in these files:
 
 ## Repo quirks
 
-- `public/assets/KK.png` is the old orange-gradient logo and is **unused** — the nav wordmark is type. Several other `/assets` files (icon*.png, quote.png, 1.png…) are likewise orphaned by the redesign.
+- `public/assets/` holds exactly five files, all of them faces: the About portrait and the four testimonial avatars. Everything else the old design used (the `KK.png` logo, skill icons, service icons, decorative shapes) was deleted with the redesign. Every reference is a literal string — nothing builds an asset path dynamically, so a filename grep is a reliable usage check.
 - `src/app/sitemap.ts` generates the sitemap; there is no hand-maintained `public/sitemap.xml` any more.
 - Server actions live in `src/app/actions/`. A `"use server"` module may only export async functions — shared constants for the contact form therefore live in `src/lib/contact.ts`. Exporting an array from the action file makes it arrive on the client as a function reference.
