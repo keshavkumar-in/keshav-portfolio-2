@@ -4,15 +4,27 @@ import styles from "@/styles/components/About.module.scss";
 
 const EXPERIENCE = [
   {
+    role: "Technical Lead",
+    org: "Entrans Technologies",
+    place: "Remote",
+    period: "Jun 2025 — present",
+    points: [
+      "Built frontend platform standards across four properties with component patterns and design systems.",
+      "Led architecture work on Backstage, focusing on scalability and maintainability.",
+      "Implemented analytics and experimentation infrastructure (GA4, GTM, GrowthBook) with Product and Marketing.",
+      "Code review, technical investigations, and mentoring.",
+    ],
+  },
+  {
     role: "Research Engineer II",
     org: "Bert Labs",
     place: "Bangalore",
     period: "Sep 2024 — Jun 2025",
     points: [
-      "Built the frontend platform on Next.js 15 and Chakra UI; engagement rose 40% and session duration 25%.",
-      "Took Largest Contentful Paint to 0.6s and Lighthouse above 95.",
-      "Cut client-side vulnerabilities by 60% and reached WCAG 2.1 AA.",
-      "Held test coverage above 95% with Jest, deployed through Dockerised CI/CD.",
+      "Migrated from client-rendered React SPA to Next.js with server-side rendering, driving 40% engagement growth and 25% higher session duration.",
+      "Optimized Core Web Vitals: LCP to 0.6s, Lighthouse 95+.",
+      "Achieved WCAG 2.1 AA, cut client-side vulnerabilities by 60%.",
+      "Maintained 95%+ test coverage with Jest and Dockerised CI/CD.",
     ],
   },
   {
@@ -21,9 +33,9 @@ const EXPERIENCE = [
     place: "Patna",
     period: "Aug 2021 — Aug 2024",
     points: [
-      "Led the team building web systems for 3,000+ schools.",
-      "Reduced query time on 1M+ record tables from 60 seconds to 1.2.",
-      "Integrated payment gateways: 30% higher success rate, 20% fewer failures.",
+      "Led team building education systems for 3,000+ schools across Bihar.",
+      "Optimized database queries on million-record tables from 60s to ~1.2s through MySQL indexing.",
+      "Improved payment gateway success rate by 30%, reduced transaction failures by 20%.",
     ],
   },
   {
@@ -32,9 +44,9 @@ const EXPERIENCE = [
     place: "Patna",
     period: "Aug 2019 — Jul 2020",
     points: [
-      "Built the booking platform in PHP and MySQL; booking efficiency up 70%.",
-      "Improved database performance 35%, absorbing 3× the traffic.",
-      "Integrated CCAvenue payments; successful transactions up 38%.",
+      "Built the booking platform in PHP and MySQL, improving booking efficiency by 70%.",
+      "Optimized database to support 3× traffic growth.",
+      "Integrated CCAvenue payments, increasing successful transactions by 38%.",
     ],
   },
 ];
@@ -97,20 +109,20 @@ export default function About() {
 
           <div className={styles.bio}>
             <p>
-              I am a full stack developer working mostly in React, Next.js, and
-              Node. What I am actually good at is the part after the build:
-              finding why a page takes four seconds to render, why a query that
-              was fine last year now times out, why a payment flow drops one
-              transaction in five.
+              I build and architect platforms at scale. I've worked across four
+              ticketing properties and previously built education systems for
+              3,000+ schools. I focus on technical problems that matter: why
+              queries timeout, why pages render slow, what breaks when users
+              pile on.
             </p>
             <p>
-              That work is measurable, so I measure it and publish the numbers.
-              Every case study on this site leads with a before and after, and
-              says where the figure came from.
+              Every claim on this site ties to data: before, after, and what
+              changed. You can't know if a fix worked without measuring against
+              the original state.
             </p>
             <p>
-              I take on freelance engagements — new builds, performance rescues,
-              and the platform work in between.
+              I take on freelance engagements in new builds, performance
+              optimization, and platform architecture.
             </p>
           </div>
         </div>
