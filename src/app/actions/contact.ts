@@ -80,6 +80,21 @@ export async function submitContact(
     };
   }
 
+  const from =
+    process.env.CONTACT_FROM_EMAIL || "Portfolio <onboarding@resend.dev>";
+
+  // Resend's 403 for the sandbox sender reads "please verify a domain", which
+  // sends you looking at DNS when the domain is already verified and the real
+  // problem is that CONTACT_FROM_EMAIL was never set in this environment.
+  // Warn up front so the log names the actual cause.
+  if (from.includes("@resend.dev")) {
+    console.warn(
+      "Contact form: CONTACT_FROM_EMAIL is not set, so sending via Resend's " +
+        "sandbox sender. It only delivers to the Resend account's own address " +
+        "— any other recipient fails with a misleading 'verify a domain' error."
+    );
+  }
+
   try {
     const resend = new Resend(apiKey);
 
@@ -95,7 +110,7 @@ export async function submitContact(
       // CONTACT_TO_EMAIL to be any inbox.
       //
       // This governs SENDING only. Mail arriving *at* hello@ is an MX concern.
-      from: process.env.CONTACT_FROM_EMAIL || "Portfolio <onboarding@resend.dev>",
+      from,
       to,
       replyTo: fields.email,
       subject: `New enquiry — ${fields.name}${fields.projectType ? ` · ${fields.projectType}` : ""}`,
@@ -119,7 +134,10 @@ export async function submitContact(
       message: "Thanks — I'll be in touch shortly.",
     };
   } catch (error) {
-    console.error("Contact form send failed:", error);
+    // Log the resolved addresses alongside the error. Nearly every failure here
+    // is a from/to mismatch, and the error text alone does not reveal which
+    // sender was actually used.
+    console.error(`Contact form send failed (from=${from} to=${to}):`, error);
     return {
       status: "error",
       message: `That didn't send. Email ${SITE.email} directly and it will reach me.`,
