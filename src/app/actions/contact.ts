@@ -84,18 +84,18 @@ export async function submitContact(
     const resend = new Resend(apiKey);
 
     const { error } = await resend.emails.send({
-      // Resend refuses to send from a domain that is not verified in the
-      // account. This default assumes keshavkumar.in IS verified there — if it
-      // is not, every send fails with a domain error and the visitor only sees
-      // the generic failure message.
+      // Sender address. keshavkumar.in is verified in Resend, so this can be
+      // any address on that domain and mail can go to ANY recipient.
       //
-      // Set CONTACT_FROM_EMAIL to "Portfolio <onboarding@resend.dev>" to fall
-      // back to Resend's shared sender, which needs no DNS but delivers only to
-      // the address the Resend account is registered with.
+      // The fallback is Resend's shared sandbox sender, which needs no DNS but
+      // is restricted to delivering only to the address the Resend account is
+      // registered with — any other recipient is rejected with a 403. That
+      // restriction comes from the shared sender, not from Resend generally,
+      // so keep CONTACT_FROM_EMAIL pointed at the verified domain to allow
+      // CONTACT_TO_EMAIL to be any inbox.
       //
-      // Note this governs SENDING only. Mail addressed *to* hello@ arriving in
-      // an inbox is a separate concern handled by MX records, not by Resend.
-      from: process.env.CONTACT_FROM_EMAIL || "Portfolio <noreply@keshavkumar.in>",
+      // This governs SENDING only. Mail arriving *at* hello@ is an MX concern.
+      from: process.env.CONTACT_FROM_EMAIL || "Portfolio <onboarding@resend.dev>",
       to,
       replyTo: fields.email,
       subject: `New enquiry — ${fields.name}${fields.projectType ? ` · ${fields.projectType}` : ""}`,
