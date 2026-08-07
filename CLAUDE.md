@@ -21,7 +21,11 @@ There is no test suite.
 `.env.local` (see `.env.local.example`):
 
 - `NEXT_PUBLIC_CONTENTFUL_SPACE_ID`, `NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN` — read in `src/lib/contentful.ts`, which falls back to the non-prefixed `CONTENTFUL_*` names. The client is only ever constructed on the server, so the non-prefixed names are the safer choice for new deployments.
-- `RESEND_API_KEY`, `CONTACT_TO_EMAIL` — the contact form. Deliberately **not** `NEXT_PUBLIC_`. Missing either one makes the form return a friendly error pointing at the mailto fallback rather than crashing.
+- `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` — the contact form. Deliberately **not** `NEXT_PUBLIC_`. Missing the key or the recipient makes the form return a friendly error pointing at the mailto fallback rather than crashing.
+
+  `CONTACT_FROM_EMAIL` is optional and defaults to `onboarding@resend.dev`. **Resend rejects any send from a domain that is not verified in the account**, so hardcoding `noreply@keshavkumar.in` fails on a fresh account with a `not_found`/domain error — which the visitor only ever sees as the generic failure message. The shared sender needs no DNS but delivers only to the account's own address. Point it at the real domain once that is verified.
+
+  Diagnose setup with `node --env-file=.env.local scripts/check-contact.mjs` — it validates the key, lists which domains are verified, and names the specific problem. Add `--send` to deliver a real test email.
 - The GTM container ID is hardcoded in `src/components/GoogleTagManager.tsx`; no env var is read for it.
 
 ## Architecture

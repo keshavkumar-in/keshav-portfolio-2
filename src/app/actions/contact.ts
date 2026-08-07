@@ -84,7 +84,18 @@ export async function submitContact(
     const resend = new Resend(apiKey);
 
     const { error } = await resend.emails.send({
-      from: `Portfolio <noreply@${new URL(SITE.url).hostname.replace(/^www\./, "")}>`,
+      // Resend refuses to send from a domain that is not verified in the
+      // account. This default assumes keshavkumar.in IS verified there — if it
+      // is not, every send fails with a domain error and the visitor only sees
+      // the generic failure message.
+      //
+      // Set CONTACT_FROM_EMAIL to "Portfolio <onboarding@resend.dev>" to fall
+      // back to Resend's shared sender, which needs no DNS but delivers only to
+      // the address the Resend account is registered with.
+      //
+      // Note this governs SENDING only. Mail addressed *to* hello@ arriving in
+      // an inbox is a separate concern handled by MX records, not by Resend.
+      from: process.env.CONTACT_FROM_EMAIL || "Portfolio <noreply@keshavkumar.in>",
       to,
       replyTo: fields.email,
       subject: `New enquiry — ${fields.name}${fields.projectType ? ` · ${fields.projectType}` : ""}`,
@@ -98,7 +109,10 @@ export async function submitContact(
       ].join("\n"),
     });
 
-    if (error) throw new Error(error.message);
+    // Resend reports failures in the body, not by throwing. Keep the error
+    // name — it is the difference between "domain not verified" and "bad key",
+    // and without it the server log says only that something went wrong.
+    if (error) throw new Error(`${error.name}: ${error.message}`);
 
     return {
       status: "success",
