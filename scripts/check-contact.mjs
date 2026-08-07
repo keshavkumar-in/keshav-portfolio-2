@@ -144,5 +144,15 @@ if (error) {
   process.exit(1);
 }
 
-ok(`sent — id ${data?.id}`);
-console.log(`\nCheck ${to}.\n`);
+// Deliberately NOT "sent". A 200 here means Resend accepted the message into
+// its queue; it validates the sending domain afterwards and can still fail the
+// email. A domain in a bad state returns an id and then fails asynchronously,
+// so treating this response as success reports a working form when it is not.
+ok(`accepted for delivery — id ${data?.id}`);
+console.log(`
+This is queue acceptance, NOT proof of delivery. Confirm the outcome:
+  1. https://resend.com/emails — find this id and check it says Delivered,
+     not Failed. "Domain is not verified" here means the domain is in a bad
+     state even if the Domains page shows Verified.
+  2. Check ${to} actually received it.
+`);
