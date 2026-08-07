@@ -1,0 +1,152 @@
+@use "../mixins" as *;
+
+.panel {
+  display: grid;
+  gap: var(--space-xl);
+  align-items: center;
+  padding-block: var(--space-xl);
+  border-top: 1px solid var(--ink-line);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  transition: border-color var(--dur) var(--ease);
+
+  &:last-child {
+    border-bottom: 1px solid var(--ink-line);
+  }
+
+  &:hover {
+    border-top-color: var(--volt);
+  }
+
+  @include below($bp-md) {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-sm);
+}
+
+.year {
+  @include label;
+  color: var(--volt);
+  font-variant-numeric: tabular-nums;
+}
+
+.eyebrow {
+  @include label;
+}
+
+.name {
+  // Deliberately below --step-display: project names run long ("BSMEB Academic
+  // Portal") and at display size they wrapped to three lines, leaving the row
+  // badly out of balance with its image.
+  font-size: clamp(1.75rem, 3.4vw, 2.75rem);
+  text-transform: uppercase;
+}
+
+.headline {
+  max-width: 46ch;
+  color: var(--smoke);
+}
+
+.delta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4em;
+  font-family: var(--font-display);
+  font-size: var(--step-heading);
+  font-weight: 900;
+  letter-spacing: var(--tracking-display);
+  font-variant-numeric: tabular-nums;
+}
+
+.deltaFrom {
+  color: var(--smoke-dim);
+  text-decoration: line-through;
+  text-decoration-thickness: 0.06em;
+}
+
+.deltaArrow {
+  color: var(--volt);
+}
+
+.deltaTo {
+  color: var(--bone);
+}
+
+.deltaLabel {
+  @include label;
+  // Sits on the same line as the figures at desktop width, wraps below on mobile.
+  margin-left: var(--space-xs);
+}
+
+.tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  list-style: none;
+
+  li {
+    @include label;
+    padding: 4px var(--space-xs);
+    border: 1px solid var(--ink-line);
+  }
+}
+
+.action {
+  @include label;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-xs);
+  color: var(--bone);
+}
+
+.actionArrow {
+  color: var(--volt);
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.panel:hover .actionArrow {
+  transform: translateX(5px);
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--ink-raised);
+  border: 1px solid var(--ink-line);
+}
+
+.image {
+  object-fit: cover;
+  // Sits back until the row is hovered, so the type leads.
+  filter: grayscale(1) contrast(1.05);
+  transition: filter var(--dur-slow) var(--ease),
+    transform var(--dur-slow) var(--ease);
+}
+
+.panel:hover .image {
+  filter: grayscale(0);
+  transform: scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image,
+  .panel:hover .image {
+    transform: none;
+  }
+}

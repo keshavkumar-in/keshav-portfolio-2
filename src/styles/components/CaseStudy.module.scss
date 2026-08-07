@@ -1,0 +1,340 @@
+@use "../mixins" as *;
+
+.page {
+  padding-top: var(--nav-h);
+}
+
+/* ---- Header ------------------------------------------------------------- */
+
+.header {
+  padding-block: var(--space-2xl) var(--space-xl);
+}
+
+.headerInner {
+  @include shell;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.back {
+  @include label;
+  color: var(--smoke);
+  transition: color var(--dur-fast) var(--ease);
+
+  &:hover {
+    color: var(--volt);
+  }
+}
+
+.eyebrow {
+  @include label;
+  color: var(--volt);
+}
+
+.title {
+  font-size: var(--step-hero);
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+}
+
+.headline {
+  max-width: var(--measure);
+  font-size: var(--step-heading);
+  color: var(--smoke);
+}
+
+.lead {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--ink-line);
+  width: 100%;
+}
+
+.facts {
+  display: grid;
+  gap: var(--space-lg);
+  width: 100%;
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--ink-line);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+  dt {
+    @include label;
+    margin-bottom: var(--space-2xs);
+  }
+
+  dd {
+    font-size: var(--step-small);
+    color: var(--bone);
+  }
+}
+
+.factWide {
+  grid-column: span 2;
+
+  @include below($bp-md) {
+    grid-column: span 1;
+  }
+}
+
+.externals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.external {
+  @include label;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md);
+  color: var(--bone);
+  border: 1px solid var(--ink-line-strong);
+  transition: border-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
+
+  &:hover {
+    color: var(--volt);
+    border-color: var(--volt);
+  }
+}
+
+.heroImage {
+  @include shell;
+  margin-bottom: var(--space-2xl);
+}
+
+.heroImageInner {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--ink-line);
+}
+
+/* ---- Prose -------------------------------------------------------------- */
+
+.prose {
+  @include shell;
+  display: grid;
+  gap: var(--space-xl);
+  padding-bottom: var(--space-2xl);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.proseBlock {
+  max-width: var(--measure);
+
+  p {
+    color: var(--smoke);
+  }
+}
+
+.h2 {
+  margin-bottom: var(--space-md);
+  font-size: var(--step-title);
+  text-transform: uppercase;
+}
+
+/* ---- What I built ------------------------------------------------------- */
+
+.built {
+  padding-block: var(--space-2xl);
+  background: var(--ink-sunken);
+  border-block: 1px solid var(--ink-line);
+}
+
+.builtInner {
+  @include shell;
+}
+
+.builtList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  list-style: none;
+  // Same reasoning as MetricGrid: case studies have 4–5 build notes, so the
+  // last row is usually partial and gap-drawn hairlines would show empty cells.
+  border-top: 1px solid var(--ink-line);
+  border-left: 1px solid var(--ink-line);
+}
+
+.builtItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-lg);
+  background: var(--ink-sunken);
+  border-right: 1px solid var(--ink-line);
+  border-bottom: 1px solid var(--ink-line);
+}
+
+.builtTitle {
+  font-size: var(--step-heading);
+}
+
+.builtBody {
+  font-size: var(--step-small);
+  color: var(--smoke);
+}
+
+/* ---- Results ------------------------------------------------------------ */
+
+.results {
+  padding-block: var(--space-2xl);
+}
+
+.resultsInner {
+  @include shell;
+}
+
+.caveats {
+  max-width: var(--measure);
+  margin-top: var(--space-lg);
+  padding-left: var(--space-md);
+  border-left: 2px solid var(--ink-line-strong);
+
+  ul {
+    padding-left: var(--space-md);
+    font-size: var(--step-small);
+    color: var(--smoke);
+  }
+
+  li {
+    margin-bottom: var(--space-2xs);
+  }
+}
+
+.caveatsLabel {
+  @include label;
+  margin-bottom: var(--space-xs);
+}
+
+/* ---- Quote -------------------------------------------------------------- */
+
+.quoteSection {
+  padding-block: var(--space-2xl);
+  background: var(--ink-sunken);
+  border-block: 1px solid var(--ink-line);
+}
+
+.quoteInner {
+  @include shell;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.quote {
+  max-width: 34ch;
+  font-family: var(--font-display);
+  font-size: var(--step-title);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--bone);
+  text-wrap: balance;
+
+  &::before {
+    content: "“";
+    color: var(--volt);
+  }
+
+  &::after {
+    content: "”";
+    color: var(--volt);
+  }
+}
+
+.attribution {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  filter: grayscale(1);
+  border: 1px solid var(--ink-line);
+}
+
+.quoteName {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--step-small);
+  font-weight: 800;
+}
+
+.quoteRole {
+  @include label;
+  display: block;
+  margin-top: 2px;
+  text-transform: none;
+  letter-spacing: 0.04em;
+}
+
+/* ---- Closing ------------------------------------------------------------ */
+
+.cta {
+  padding-block: var(--space-2xl);
+}
+
+.ctaInner {
+  @include shell;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+
+.ctaTitle {
+  font-size: var(--step-display);
+  text-transform: uppercase;
+}
+
+.next {
+  display: block;
+  padding-block: var(--space-xl);
+  border-top: 1px solid var(--ink-line);
+  transition: background var(--dur) var(--ease);
+
+  &:hover {
+    background: var(--ink-raised);
+  }
+}
+
+.nextLabel {
+  @include shell;
+  @include label;
+  display: block;
+  color: var(--volt);
+}
+
+.nextName {
+  @include shell;
+  display: block;
+  margin-top: var(--space-xs);
+  font-family: var(--font-display);
+  font-size: var(--step-display);
+  font-weight: 900;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+}
+
+.nextArrow {
+  @include shell;
+  display: block;
+  margin-top: var(--space-sm);
+  color: var(--volt);
+  font-size: var(--step-heading);
+  transition: transform var(--dur) var(--ease);
+}
+
+.next:hover .nextArrow {
+  transform: translateX(8px);
+}

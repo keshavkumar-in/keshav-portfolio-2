@@ -34,16 +34,19 @@ export type ContentfulPortfolio = {
   fields: IPortfolioFields;
 };
 
+/**
+ * Fetches every project entry.
+ *
+ * This deliberately throws rather than returning []. It now runs at build time,
+ * where swallowing the error would silently ship a site with no work on it —
+ * the single worst failure mode for a portfolio. A failed build is louder and
+ * cheaper to notice.
+ */
 export async function getPortfolioItems(): Promise<ContentfulPortfolio[]> {
-  try {
-    const response = await client.getEntries({
-      content_type: "projectName",
-      order: ["-sys.createdAt"],
-    });
+  const response = await client.getEntries({
+    content_type: "projectName",
+    order: ["-sys.createdAt"],
+  });
 
-    return response.items as unknown as ContentfulPortfolio[];
-  } catch (error) {
-    console.error("Error fetching portfolio items:", error);
-    return [];
-  }
+  return response.items as unknown as ContentfulPortfolio[];
 }

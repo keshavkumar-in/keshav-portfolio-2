@@ -1,0 +1,113 @@
+@use "../mixins" as *;
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 100svh;
+  padding-top: calc(var(--nav-h) + var(--space-xl));
+}
+
+.inner {
+  @include shell;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: var(--space-2xl);
+}
+
+.eyebrow {
+  @include label;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--ink-line);
+}
+
+.sep {
+  color: var(--volt);
+}
+
+.headline {
+  margin-top: var(--space-lg);
+  font-size: var(--step-hero);
+  text-transform: uppercase;
+  // Big type is a mass; it needs the tightest tracking in the system.
+  letter-spacing: -0.05em;
+}
+
+.accent {
+  color: var(--volt);
+}
+
+.body {
+  display: grid;
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+
+  @include below($bp-md) {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+.lede {
+  max-width: var(--measure);
+  color: var(--smoke);
+}
+
+.stats {
+  display: flex;
+  gap: var(--space-xl);
+
+  @include below($bp-md) {
+    gap: var(--space-2xl);
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.statLabel {
+  @include label;
+  order: 2;
+}
+
+.statValue {
+  order: 1;
+  font-family: var(--font-display);
+  font-size: var(--step-title);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: var(--tracking-display);
+  font-variant-numeric: tabular-nums;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.proof {
+  border-top: 1px solid var(--ink-line);
+  border-bottom: 1px solid var(--ink-line);
+  background: var(--ink-sunken);
+}
+
+.proofInner {
+  @include shell;
+  display: grid;
+  gap: var(--space-lg) var(--space-xl);
+  padding-block: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}

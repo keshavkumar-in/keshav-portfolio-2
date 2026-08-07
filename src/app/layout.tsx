@@ -1,33 +1,53 @@
 // /app/layout.tsx
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Archivo, Inter, JetBrains_Mono } from "next/font/google";
 import "@/styles/globals.scss";
-import ScrollToTop from "@/components/ScrollToTop";
+import ScrollToTop from "@/components/layout/ScrollToTop";
 import GoogleTagManager from "@/components/GoogleTagManager";
+import { SITE } from "@/lib/site";
 
-const inter = Inter({ subsets: ["latin"] });
+// Display face — carries the whole visual identity. Variable, so the full
+// 100–900 range is available without shipping extra files.
+const archivo = Archivo({
+  subsets: ["latin"],
+  variable: "--font-archivo",
+  display: "swap",
+});
+
+// Utility face — eyebrows, metadata, metric deltas.
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  display: "swap",
+});
+
+// Body face — prose only.
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.keshavkumar.in"),
+  metadataBase: new URL(SITE.url),
   title: {
-    default: "Keshav Kumar | Full Stack Developer",
+    default: "Keshav Kumar — Full Stack Developer for hire",
     template: "%s | Keshav Kumar",
   },
   description:
-    "Professional Full Stack Developer specializing in React, Node.js, and modern web technologies. View my portfolio of projects and get in touch for collaboration.",
+    "Freelance full stack developer. I build and rescue web platforms — Core Web Vitals, payment flows, and systems that hold up at scale. LCP 4.5s to 0.6s. Query times 60s to 1.2s.",
   keywords: [
-    "Full Stack Developer",
-    "React Developer",
+    "Freelance Full Stack Developer",
+    "Hire React Developer",
+    "Next.js Developer",
+    "Web Performance Consultant",
+    "Core Web Vitals",
     "Node.js Developer",
-    "Web Development",
-    "Software Engineer",
-    "JavaScript Expert",
-    "Frontend Developer",
-    "Backend Developer",
+    "Freelance Web Developer India",
   ],
-  authors: [{ name: "Keshav Kumar" }],
-  creator: "Keshav Kumar",
-  publisher: "Keshav Kumar",
+  authors: [{ name: SITE.name }],
+  creator: SITE.name,
+  publisher: SITE.name,
   formatDetection: {
     email: false,
     address: false,
@@ -36,26 +56,20 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.keshavkumar.in",
-    siteName: "Keshav Kumar - Full Stack Developer",
-    title: "Keshav Kumar | Full Stack Developer",
+    url: SITE.url,
+    siteName: `${SITE.name} — Full Stack Developer`,
+    title: "Keshav Kumar — Full Stack Developer for hire",
     description:
-      "Professional Full Stack Developer specializing in React, Node.js, and modern web technologies. View my portfolio of projects and get in touch for collaboration.",
-    images: [
-      {
-        url: "https://www.keshavkumar.in/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Keshav Kumar - Full Stack Developer",
-      },
-    ],
+      "Freelance full stack developer. I build and rescue web platforms that hold up at scale. See the case studies.",
+    // No `images` here on purpose. src/app/opengraph-image.tsx generates the
+    // card and Next wires the tags itself; a hand-written path is what broke
+    // previously, pointing at an /og-image.jpg that was never in the repo.
   },
   twitter: {
     card: "summary_large_image",
-    title: "Keshav Kumar | Full Stack Developer",
+    title: "Keshav Kumar — Full Stack Developer for hire",
     description:
-      "Professional Full Stack Developer specializing in React, Node.js, and modern web technologies.",
-    images: ["https://www.keshavkumar.in/twitter-image.jpg"],
+      "Freelance full stack developer. I build and rescue web platforms that hold up at scale.",
     creator: "@keshavcodes",
   },
   robots: {
@@ -72,6 +86,8 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
+      // Preferred where supported — stays sharp on any display density.
+      { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
     ],
@@ -81,10 +97,7 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   alternates: {
-    canonical: "https://keshavkumar.in",
-    languages: {
-      "en-US": "https://keshavkumar.in",
-    },
+    canonical: SITE.url,
   },
 };
 
@@ -94,12 +107,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
-        {/* Only static tags/components here */}
-      </head>
-      <body className={inter.className} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${archivo.variable} ${jetbrainsMono.variable} ${inter.variable}`}
+    >
+      <body suppressHydrationWarning>
         <GoogleTagManager />
+        <a href="#main" className="skipLink">
+          Skip to content
+        </a>
         {children}
         <ScrollToTop />
       </body>

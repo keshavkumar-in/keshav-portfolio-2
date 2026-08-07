@@ -1,0 +1,73 @@
+// Design tokens — the single source of truth.
+//
+// Exposed as CSS custom properties so component modules reference them with
+// var(--token) and never need a @use line. Before this file, the brand colours
+// were repeated as literals across ~20 module files.
+
+:root {
+  // ---- Colour -------------------------------------------------------------
+  // Warm-shifted blacks; a pure #000/#fff pair reads as harsh under the
+  // oversized display type this design leans on.
+  --ink: #0d0d0c; // page background
+  --ink-raised: #161614; // cards, panels
+  --ink-sunken: #090908; // wells, footer
+  // --ink at 86%, for the blurred nav. Only ever used behind a working
+  // backdrop-filter — on its own it is too transparent to hide content.
+  --ink-veil: rgba(13, 13, 12, 0.86);
+  --ink-line: #2a2a26; // 1px hairlines — the only "depth" in the system
+  --ink-line-strong: #3d3d37; // hairlines on hover / focus
+
+  --bone: #f2f1ea; // primary text
+  --smoke: #8c8c84; // secondary text
+  --smoke-dim: #5f5f59; // tertiary text, disabled
+
+  --volt: #d6ff3f; // the single accent
+  --volt-ink: #0d0d0c; // text on accent
+  --volt-dim: rgba(214, 255, 63, 0.14); // accent washes, selection
+
+  --danger: #ff6b4a; // form errors only
+
+  // ---- Type ---------------------------------------------------------------
+  --font-display: var(--font-archivo), "Arial Black", system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
+  --font-body: var(--font-inter), system-ui, -apple-system, sans-serif;
+
+  // Fluid display scale. The hero statement is the largest thing on the site
+  // and is allowed to be genuinely large.
+  // Sized so the hero statement, its CTAs, and the proof strip all clear the
+  // fold at 1440×900 — the largest type that still leaves the page usable.
+  --step-hero: clamp(2.75rem, 8vw, 6rem);
+  --step-display: clamp(2rem, 5vw, 3.75rem);
+  --step-title: clamp(1.5rem, 3vw, 2.25rem);
+  --step-heading: clamp(1.25rem, 2vw, 1.6rem);
+  --step-body: clamp(1rem, 1.1vw, 1.0625rem);
+  --step-small: 0.875rem;
+  --step-label: 0.6875rem; // mono eyebrows and metadata
+
+  --tracking-display: -0.045em; // tight, so big type reads as one mass
+  --tracking-label: 0.14em; // open, so mono labels read as labels
+  --leading-display: 0.88;
+  --leading-body: 1.65;
+
+  // ---- Space --------------------------------------------------------------
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3.5rem;
+  --space-2xl: 5.5rem;
+  --space-3xl: clamp(5rem, 12vh, 9rem); // vertical rhythm between sections
+
+  // ---- Layout -------------------------------------------------------------
+  --measure: 62ch; // max line length for prose
+  --shell: 1320px; // max content width
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --nav-h: 72px;
+
+  // ---- Motion -------------------------------------------------------------
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --dur-fast: 140ms;
+  --dur: 260ms;
+  --dur-slow: 520ms;
+}

@@ -1,0 +1,72 @@
+// Shared mixins and breakpoints.
+// Usage in a component module: @use "@/styles/mixins" as *;
+
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+
+@mixin below($bp) {
+  @media (max-width: #{$bp - 0.02px}) {
+    @content;
+  }
+}
+
+@mixin above($bp) {
+  @media (min-width: $bp) {
+    @content;
+  }
+}
+
+// Centred content column used by every section.
+@mixin shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+// Standard vertical rhythm between page sections.
+@mixin section {
+  padding-block: var(--space-3xl);
+}
+
+// The mono eyebrow that labels every section and metadata run.
+@mixin label {
+  font-family: var(--font-mono);
+  font-size: var(--step-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--smoke);
+}
+
+// Oversized display type. Set uppercase at the call site only where wanted —
+// case-study prose headings stay sentence case.
+@mixin display($size: var(--step-display)) {
+  font-family: var(--font-display);
+  font-size: $size;
+  font-weight: 900;
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  color: var(--bone);
+}
+
+// Flat, square, bordered surface. The system has no shadows and no radii;
+// hairlines carry all the structure.
+@mixin panel {
+  background: var(--ink-raised);
+  border: 1px solid var(--ink-line);
+}
+
+@mixin focus-ring {
+  outline: 2px solid var(--volt);
+  outline-offset: 3px;
+}
+
+// Honour reduced-motion for anything that moves.
+@mixin motion-safe {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}

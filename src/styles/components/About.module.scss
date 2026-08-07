@@ -1,0 +1,157 @@
+@use "../mixins" as *;
+
+.section {
+  @include section;
+}
+
+.inner {
+  @include shell;
+}
+
+.intro {
+  display: grid;
+  gap: var(--space-xl);
+  align-items: start;
+  // A fixed portrait column rather than a fraction: at 0.6fr the image grew to
+  // roughly 600px tall and left a well of dead space beside the bio.
+  grid-template-columns: 300px minmax(0, 1fr);
+
+  @include below($bp-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.portrait {
+  max-width: 300px;
+  border: 1px solid var(--ink-line);
+  background: var(--ink-raised);
+}
+
+.portraitImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  // Desaturated so the accent stays the only colour on the page.
+  filter: grayscale(1) contrast(1.05);
+}
+
+.bio {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: var(--measure);
+  color: var(--smoke);
+
+  p:first-child {
+    color: var(--bone);
+    font-size: var(--step-heading);
+    font-family: var(--font-body);
+    line-height: 1.45;
+  }
+}
+
+.columns {
+  display: grid;
+  gap: var(--space-xl);
+  margin-top: var(--space-2xl);
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+
+  @include below($bp-lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.columnTitle {
+  @include label;
+  padding-bottom: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  color: var(--volt);
+  border-bottom: 1px solid var(--ink-line);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  list-style: none;
+}
+
+.entry {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  padding-left: var(--space-md);
+  border-left: 1px solid var(--ink-line);
+  transition: border-color var(--dur) var(--ease);
+
+  &:hover {
+    border-left-color: var(--volt);
+  }
+}
+
+.period {
+  @include label;
+  font-variant-numeric: tabular-nums;
+}
+
+.role {
+  margin-top: var(--space-2xs);
+  font-size: var(--step-heading);
+  text-transform: uppercase;
+}
+
+.org {
+  font-size: var(--step-small);
+  color: var(--smoke);
+}
+
+.points {
+  margin-top: var(--space-sm);
+  padding-left: var(--space-md);
+  font-size: var(--step-small);
+  color: var(--smoke);
+
+  li {
+    margin-bottom: var(--space-2xs);
+  }
+
+  li::marker {
+    color: var(--volt);
+  }
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.stackGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.stackLabel {
+  @include label;
+}
+
+.stackList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  list-style: none;
+
+  li {
+    padding: 5px var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: var(--step-small);
+    color: var(--bone);
+    border: 1px solid var(--ink-line);
+    transition: border-color var(--dur-fast) var(--ease);
+
+    &:hover {
+      border-color: var(--ink-line-strong);
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@use "../mixins" as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  // Hairlines are drawn by the cells, not by a coloured container showing
+  // through 1px gaps. The gap trick paints every *empty* track too, and metric
+  // counts vary per case study (8, 6, 4, 3), so a partly-filled last row showed
+  // up as grey dead boxes. Drawn this way, an unfilled track is simply absent.
+  border-top: 1px solid var(--ink-line);
+  border-left: 1px solid var(--ink-line);
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-lg) var(--space-md);
+  background: var(--ink);
+  border-right: 1px solid var(--ink-line);
+  border-bottom: 1px solid var(--ink-line);
+}
+
+.label {
+  @include label;
+  order: 2; // figure first, label beneath
+}
+
+.value {
+  display: flex;
+  align-items: baseline;
+  gap: 0.28em;
+  order: 1;
+  font-family: var(--font-display);
+  font-size: var(--step-heading);
+  font-weight: 900;
+  letter-spacing: var(--tracking-display);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.from {
+  color: var(--smoke-dim);
+  text-decoration: line-through;
+  text-decoration-thickness: 0.06em;
+}
+
+.arrow {
+  color: var(--volt);
+}
+
+.to {
+  color: var(--bone);
+}
